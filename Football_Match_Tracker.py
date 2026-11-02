@@ -219,7 +219,9 @@ def home_vs_away(matches):
     else:
         return "Unknown"
 
-
+    print("Home Games: " + str(home_games))
+    print("Away Games: " + str(away_games))
+    
 # -----------------------------------------------------------------------------------------------------------
 #def win_percent(matches):
 
