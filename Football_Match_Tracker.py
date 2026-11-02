@@ -150,13 +150,9 @@ def edit_match():
     print("\n1. Date \n2. Home Team  \n3. Away Team \n4. Home Score \n5. Away Score \n6. Stadium \n7. Distance \n8. Result \n9. Rating \n")
     change = int(input("Please select the variable you would like to change by typing the relevant number: "))
 
-# if user selects 1 for date then ask them to input a new date and replace the old one with the new one. 
-#Make sure this changes the text file. 
-#Dont write a new line without either changing or deleting the original one
-
     for i in range(len(matches)):
         if matches[i].startswith(edit):
-            data = matches[i].strip().split(",")
+            data = matches[i].strip().split("|")
 
             if change in [4,5,7,9]:
                 new_value = int(input("Enter the new data: "))
@@ -164,9 +160,12 @@ def edit_match():
                 new_value = input("Enter the new data: ")
 
             data[change - 1] = str(new_value)
-            matches[i] = ",".join(data) + "\n"
+            matches[i] = "|".join(data) + "\n"
 
             break
+            
+    with open("matches_Tracker.txt", "w") as f:
+    f.writelines(matches)
 
 # -----------------------------------------------------------------------------------------------------------
 
