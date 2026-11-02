@@ -170,16 +170,16 @@ def view_stats():
                 print("You have been to: " + str(len(matches)) + " matches\n")
             case 2:
                 print("\n---- Home vs Away ----\n")
-                home_vs_away(matches, fav_team)
+                home_vs_away(matches)
             case 3:
                 print("\n---- Win Percentage----\n")
-                win_percent(matches, fav_team)
+                win_percent(matches)
             case 4:
                 print("\n---- Total Goals ----\n")
-                total_goals(matches, fav_team)
+                total_goals(matches)
             case 5:
                 print("\n---- Average Rating ----\n")
-                average_rating(matches, fav_team)
+                average_rating(matches)
             case 6:
                 print("\n---- Stadiums Visited ----\n")
                 stadiums_visited(matches)
@@ -193,7 +193,7 @@ def view_stats():
 
 # -----------------------------------------------------------------------------------------------------------
 
-def home_or_away(data, fav_team):
+def home_or_away(data):
     if data[1] == fav_team:
         return "Home"
     elif data[2] == fav_team:
@@ -203,13 +203,13 @@ def home_or_away(data, fav_team):
 
 # -----------------------------------------------------------------------------------------------------------
 
-def home_vs_away(matches, fav_team):
+def home_vs_away(matches):
     home_games = 0
     away_games = 0
 
     for match in matches:
         data = match.strip().split("|")
-        location = home_or_away(data, fav_team)
+        location = home_or_away(data)
 
         if location == "Home":
             home_games += 1
@@ -223,7 +223,7 @@ def home_vs_away(matches, fav_team):
     
 # -----------------------------------------------------------------------------------------------------------
 
-def win_percent(matches, fav_team):
+def win_percent(matches):
     no_of_wins = 0
     for match in matches:
         data = match.strip().split("|")
@@ -235,13 +235,13 @@ def win_percent(matches, fav_team):
     
 # -----------------------------------------------------------------------------------------------------------
 
-def total_goals(matches, fav_team):
+def total_goals(matches):
     tot_goals = 0
     tot_team_goals = 0
     
     for match in matches:
         data = match.strip().split("|")
-        location = home_or_away(data, fav_team)
+        location = home_or_away(data)
 
         goals_in_game = int(data[3]) + int(data[4])
         tot_goals += goals_in_game
@@ -261,7 +261,7 @@ def total_goals(matches, fav_team):
     
 # -----------------------------------------------------------------------------------------------------------
 
-def average_rating(matches, fav_team):
+def average_rating(matches):
     total_rating = 0
 
     for match in matches:
