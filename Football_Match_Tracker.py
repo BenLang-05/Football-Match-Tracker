@@ -325,8 +325,10 @@ def edit_match():
         if matches[i].startswith(edit):
             data = matches[i].strip().split("|")
 
-            if change in [4,5,7,9]:
+            if change in [4,5]:
                 new_value = int(input("Enter the new data: "))
+            elif change in [7,9]:
+                new_value = float(input("Enter the new data: "))
             else:
                 new_value = input("Enter the new data: ")
 
