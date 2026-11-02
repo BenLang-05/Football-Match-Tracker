@@ -270,7 +270,7 @@ def average_rating(matches, fav_team):
 
     avg_rating = total_rating / len(matches)
 
-    print("You gave " + fav_team + " an average rating of " + str(round(avg_rating, 1)) + " across " + str(len(matches)) + " matches seen\n")
+    print("You gave " + fav_team + " an average rating of " + str(round(avg_rating, 1)) + "/10 across " + str(len(matches)) + " matches seen\n")
 
 # -----------------------------------------------------------------------------------------------------------
 
