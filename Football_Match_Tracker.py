@@ -182,7 +182,7 @@ def view_stats():
                 average_rating(matches, fav_team)
             case 6:
                 print("\n---- Stadiums Visited ----\n")
-                #stadiums_visited(matches)
+                stadiums_visited(matches)
             case 7:
                 print("\n---- Total Mileage ----\n")
                 #total_mileage(matches)
@@ -192,6 +192,7 @@ def view_stats():
                 print("\n---- Invalid entry ----\n")
 
 # -----------------------------------------------------------------------------------------------------------
+
 def home_or_away(data, fav_team):
     if data[1] == fav_team:
         return "Home"
@@ -201,6 +202,7 @@ def home_or_away(data, fav_team):
         return "Unknown"
 
 # -----------------------------------------------------------------------------------------------------------
+
 def home_vs_away(matches, fav_team):
     home_games = 0
     away_games = 0
@@ -220,6 +222,7 @@ def home_vs_away(matches, fav_team):
     print("Away Games: " + str(away_games) + "\n")
     
 # -----------------------------------------------------------------------------------------------------------
+
 def win_percent(matches, fav_team):
     no_of_wins = 0
     for match in matches:
@@ -230,8 +233,8 @@ def win_percent(matches, fav_team):
     print(fav_team + " had a " + str(round(win_percent,1)) + "% win rate")
     print("Winning " + str(no_of_wins) + " out of " + str(len(matches)) + " matches you visited\n")
     
-
 # -----------------------------------------------------------------------------------------------------------
+
 def total_goals(matches, fav_team):
     tot_goals = 0
     tot_team_goals = 0
@@ -256,8 +259,8 @@ def total_goals(matches, fav_team):
     print("With " + fav_team + " scoring " + str(tot_team_goals) + " of those goals")
     print("Averaging at " + str(round(average_goals,1)) + "% of the total goals you've seen\n")
     
-
 # -----------------------------------------------------------------------------------------------------------
+
 def average_rating(matches, fav_team):
     total_rating = 0
 
@@ -269,11 +272,28 @@ def average_rating(matches, fav_team):
 
     print("You gave " + fav_team + " an average rating of " + str(round(avg_rating, 1)) + " across " + str(len(matches)) + " matches seen\n")
 
+# -----------------------------------------------------------------------------------------------------------
+
+def stadiums_visited(matches):
+    stadiums = {}
+
+    for match in matches:
+        data = match.strip().split("|")
+
+        stadium = data[5]
+
+        if stadium in stadiums:
+            stadiums[stadium] += 1
+        else:
+            stadiums[stadium] = 1
+
+    print("You have visited the following stadiums:\n")
+
+    for stadium, visits in stadiums.items():
+        print(stadium + ": " + str(visits) + " time(s)")
 
 # -----------------------------------------------------------------------------------------------------------
-#def stadiums_visited(matches):
 
-# -----------------------------------------------------------------------------------------------------------
 #def total_mileage(matches):
 
 # -----------------------------------------------------------------------------------------------------------
