@@ -141,7 +141,7 @@ def search_match():
         matches = f.readlines()
 
     search = input("What is it your looking for (enter search term)? ").lower()
-    print("\n Results containing: " + search.upper() + "\n")
+    print("\nResults containing: " + search.upper() + "\n")
 
     found = False
     
