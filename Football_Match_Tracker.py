@@ -1,6 +1,14 @@
 import sys
 from datetime import datetime
 
+# -----------------------------------------------------------------------------------------------------------
+
+print("Welcome to the football match tracker app!")
+fav_team = input("Please enter the team you support: ")
+print("Good choice! \n")
+
+# -----------------------------------------------------------------------------------------------------------
+
 class Match:
     def __init__(self, date, homeTeam, awayTeam, homeScore, awayScore, stadium, distance, result, rating):
         self.date = date
@@ -195,8 +203,8 @@ def delete_match():
 # -----------------------------------------------------------------------------------------------------------
 
 while True:
-    
-    print("\n1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
+
+    print("1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
     functions = int(input("Please select an option by typing the relevant number: "))
 
     match functions:
