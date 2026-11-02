@@ -72,7 +72,6 @@ def view_match():
         matches = f.readlines()
 
     for match in matches:
-        #data = match.strip().split("|")
         display_match(match)
 
 # -----------------------------------------------------------------------------------------------------------
