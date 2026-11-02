@@ -305,7 +305,7 @@ def total_mileage(matches):
     avg_miles = total_miles / len(matches)
     
     print("You travelled " + str(total_miles) + " miles across " + str(len(matches)) + " matches")
-    print("At an average of " + str(round(avg_miles,1)) + " miles per game")
+    print("At an average of " + str(round(avg_miles,1)) + " miles per game\n")
 
 # -----------------------------------------------------------------------------------------------------------
 
