@@ -220,7 +220,7 @@ def home_vs_away(matches, fav_team):
             return "Unknown"
 
     print("Home Games: " + str(home_games))
-    print("Away Games: " + str(away_games))
+    print("Away Games: " + str(away_games) + "\n")
     
 # -----------------------------------------------------------------------------------------------------------
 #def win_percent(matches):
