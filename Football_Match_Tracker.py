@@ -173,7 +173,7 @@ def view_stats():
                 home_vs_away(matches, fav_team)
             case 3:
                 print("\n---- Win Percentage----\n")
-                #win_percent(matches)
+                win_percent(matches, fav_team)
             case 4:
                 print("\n---- Total Goals ----\n")
                 #total_goals(matches)
@@ -223,7 +223,16 @@ def home_vs_away(matches, fav_team):
     print("Away Games: " + str(away_games) + "\n")
     
 # -----------------------------------------------------------------------------------------------------------
-#def win_percent(matches):
+def win_percent(matches, fav_team):
+    no_of_wins = 0
+    for match in matches:
+        data = match.strip().split("|")
+        if data[7].lower() == "win":
+            no_of_wins += 1
+    win_percent = (no_of_wins / len(matches)) * 100
+    print(fav_team + " had a " + str(round(win_percent,1)) + "% win rate")
+    print("Winning " + str(no_of_wins) + " out of " + str(len(matches)) + " matches you visited\n")
+    
 
 # -----------------------------------------------------------------------------------------------------------
 #def total_goals(matches):
