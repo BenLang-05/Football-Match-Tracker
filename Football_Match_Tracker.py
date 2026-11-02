@@ -145,7 +145,7 @@ def edit_match():
     for match in matches:
         simple_display(match)
 
-    edit = input("Please enter the date of the game you want to delete (in the form dd/mm/yyyy)")
+    edit = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
     
     print("\n1. Date \n2. Home Team  \n3. Away Team \n4. Home Score \n5. Away Score \n6. Stadium \n7. Distance \n8. Result \n9. Rating \n")
     change = int(input("Please select the variable you would like to change by typing the relevant number: "))
