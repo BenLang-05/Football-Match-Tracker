@@ -165,25 +165,25 @@ def view_stats():
     match stat_option:
         case 1:
             print("\n---- Total matches seen ----\n")
-            total_matches()
+            total_matches(matches)
         case 2:
             print("\n---- Home vs Away ----\n")
-            #home_vs_away()
+            #home_vs_away(matches)
         case 3:
             print("\n---- Win Percentage----\n")
-            #win_percent()
+            #win_percent(matches)
         case 4:
             print("\n---- Total Goals ----\n")
-            #total_goals()
+            #total_goals(matches)
         case 5:
             print("\n---- Average Rating ----\n")
-            #average_rating()
+            #average_rating(matches)
         case 6:
             print("\n---- Stadiums Visited ----\n")
-            #stadiums_visited()
+            #stadiums_visited(matches)
         case 7:
             print("\n---- Total Mileage ----\n")
-            #total_mileage()
+            #total_mileage(matches)
         case _:
             print("\n---- Invalid entry ----")
 
