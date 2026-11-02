@@ -141,11 +141,20 @@ def search_match():
         matches = f.readlines()
 
     search = input("What is it your looking for (enter search term)? ").lower()
-    print("\n Results containing: " + search.upper())
+    print("\n Results containing: " + search.upper() + "\n")
 
+    found = false
+    
     for match in matches:
         if search in match.lower():
             display_match(match)
+            found = True
+
+    if not found:
+        print("\n---- No matches found! ----")
+
+
+    
 
 # -----------------------------------------------------------------------------------------------------------
 
