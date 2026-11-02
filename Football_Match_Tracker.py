@@ -192,10 +192,33 @@ def view_stats():
                 print("\n---- Invalid entry ----\n")
 
 # -----------------------------------------------------------------------------------------------------------
-def total_matches(matches):
+def home_or_away(data, fav_team):
+    if data[1] == fav_team:
+        return "Home"
+    elif data[2] == fav_team:
+        return "Away"
+    else:
+        return "Unknown"
+
+# -----------------------------------------------------------------------------------------------------------
+def total_matches(matches, fav_team):
     print("You have been to: " + str(len(matches)) + " matches\n")
 # -----------------------------------------------------------------------------------------------------------
-#def home_vs_away(matches):
+def home_vs_away(matches):
+    home_games = 0
+    away_games = 0
+
+    for match in matches:
+        data = match.strip().split("|")
+        location = home_or_away(data, fav_team)
+
+    if location == "Home":
+        home_games += 1
+    elif location == "Away":
+        away_games += 1
+    else:
+        return "Unknown"
+
 
 # -----------------------------------------------------------------------------------------------------------
 #def win_percent(matches):
