@@ -142,8 +142,15 @@ def sort_distance(reverse_order):
 
 # -----------------------------------------------------------------------------------------------------------
 
-#def delete_match():
+def delete_match():
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+        
+    for match in matches:
+        simple_display(match)
 
+    delete = input("Please enter the date of the game you want to delete (in the form dd/mm/yyyy)")
+    
 
 
 # -----------------------------------------------------------------------------------------------------------
@@ -175,7 +182,7 @@ while True:
             #edit_match()
         case 7:
             print("\n---- Delete match entries ----\n")
-            #delete_match()
+            delete_match()
         case 8:
             print("\n---- Thankyou, Goodbye! ----\n")
             sys.exit()
