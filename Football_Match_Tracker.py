@@ -156,6 +156,9 @@ def search_match():
 
 def view_stats():
 
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+        
     print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n")
     stat_option = int(input("Please select a statistics option by typing the relevant number: "))
 
@@ -185,25 +188,25 @@ def view_stats():
             print("\n---- Invalid entry ----")
 
 # -----------------------------------------------------------------------------------------------------------
-        def total_matches():
+        def total_matches(matches):
+            print("You have been to: " + str(len(matches)) + " matches")
+# -----------------------------------------------------------------------------------------------------------
+        def home_vs_away(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-        def home_vs_away():
+        def win_percent(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-        def win_percent():
+        def total_goals(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-        def total_goals():
+        def average_rating(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-        def average_rating():
+        def stadiums_visited(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-        def stadiums_visited():
-
-# -----------------------------------------------------------------------------------------------------------
-        def total_mileage():
+        def total_mileage(matches):
 
 # -----------------------------------------------------------------------------------------------------------
 
