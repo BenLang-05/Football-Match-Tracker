@@ -165,7 +165,7 @@ def edit_match():
             break
             
     with open("matches_Tracker.txt", "w") as f:
-    f.writelines(matches)
+        f.writelines(matches)
 
 # -----------------------------------------------------------------------------------------------------------
 
