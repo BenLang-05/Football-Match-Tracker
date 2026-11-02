@@ -168,22 +168,22 @@ def view_stats():
             total_matches()
         case 2:
             print("\n---- Home vs Away ----\n")
-            home_vs_away()
+            #home_vs_away()
         case 3:
             print("\n---- Win Percentage----\n")
-            win_percent()
+            #win_percent()
         case 4:
             print("\n---- Total Goals ----\n")
-            total_goals()
+            #total_goals()
         case 5:
             print("\n---- Average Rating ----\n")
-            average_rating()
+            #average_rating()
         case 6:
             print("\n---- Stadiums Visited ----\n")
-            stadiums_visited()
+            #stadiums_visited()
         case 7:
             print("\n---- Total Mileage ----\n")
-            total_mileage()
+            #total_mileage()
         case _:
             print("\n---- Invalid entry ----")
 
@@ -191,22 +191,22 @@ def view_stats():
 def total_matches(matches):
     print("You have been to: " + str(len(matches)) + " matches")
 # -----------------------------------------------------------------------------------------------------------
-def home_vs_away(matches):
+#def home_vs_away(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-def win_percent(matches):
+#def win_percent(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-def total_goals(matches):
+#def total_goals(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-def average_rating(matches):
+#def average_rating(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-def stadiums_visited(matches):
+#def stadiums_visited(matches):
 
 # -----------------------------------------------------------------------------------------------------------
-def total_mileage(matches):
+#def total_mileage(matches):
 
 # -----------------------------------------------------------------------------------------------------------
 
