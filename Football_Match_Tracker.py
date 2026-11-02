@@ -178,7 +178,7 @@ def delete_match():
 
     delete = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
 
-     for i in range(len(matches)):
+    for i in range(len(matches)):
         if matches[i].startswith(delete):
             del matches[i]
 
@@ -186,7 +186,6 @@ def delete_match():
 
     with open("matches_Tracker.txt", "w") as f:
         f.writelines(matches)
-# Code to delete match from the text file
 
 # -----------------------------------------------------------------------------------------------------------
 
