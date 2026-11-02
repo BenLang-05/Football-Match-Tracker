@@ -63,7 +63,7 @@ def add_match():
             f"{match.result}|{match.rating}\n"
         )
 
-    print("\n---- Match saved successfully! ----")
+    print("\n---- Match saved successfully! ----\n")
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -140,10 +140,11 @@ def search_match():
     with open("matches_Tracker.txt", "r") as f:
         matches = f.readlines()
 
-    search = input("\nWhat is it your looking for (enter search term)? ")
+    search = input("What is it your looking for (enter search term)? ").lower()
+    print("\n Results containing: " + search.upper())
 
     for match in matches:
-        if search in match:
+        if search in match.lower():
             display_match(match)
 
 # -----------------------------------------------------------------------------------------------------------
