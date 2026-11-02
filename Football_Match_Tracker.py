@@ -144,7 +144,7 @@ def search_match():
 
     for match in matches:
         if search in match:
-            simple_display(match)
+            display_match(match)
 
 # -----------------------------------------------------------------------------------------------------------
 
