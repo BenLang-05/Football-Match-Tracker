@@ -167,7 +167,7 @@ def view_stats():
         match stat_option:
             case 1:
                 print("\n---- Total matches seen ----\n")
-                total_matches(matches)
+                print("You have been to: " + str(len(matches)) + " matches\n")
             case 2:
                 print("\n---- Home vs Away ----\n")
                 home_vs_away(matches, fav_team)
@@ -200,9 +200,6 @@ def home_or_away(data, fav_team):
     else:
         return "Unknown"
 
-# -----------------------------------------------------------------------------------------------------------
-def total_matches(matches):
-    print("You have been to: " + str(len(matches)) + " matches\n")
 # -----------------------------------------------------------------------------------------------------------
 def home_vs_away(matches, fav_team):
     home_games = 0
