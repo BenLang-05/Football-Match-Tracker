@@ -24,6 +24,11 @@ def display_match(match):
     print(f"Team Rating: {data[8]}")
     print("-------------------------------------------------------")
 
+def simple_display(match):
+    data = match.strip().split("|")
+
+    print(f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}")
+
 # -----------------------------------------------------------------------------------------------------------
 
 def add_match():
@@ -98,7 +103,7 @@ def sort_date(reverse_order):
     matches.sort(key=lambda match: datetime.strptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)
 
     for match in matches:
-        display_match(match)
+        simple_display(match)
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -138,6 +143,7 @@ def sort_distance(reverse_order):
 # -----------------------------------------------------------------------------------------------------------
 
 #def delete_match():
+
 
 
 # -----------------------------------------------------------------------------------------------------------
