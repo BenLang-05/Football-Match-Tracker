@@ -289,9 +289,10 @@ def stadiums_visited(matches):
 
     print("You have visited the following stadiums:\n")
 
-    for stadium, visits in stadiums.items():
+    for stadium, visits in sorted(stadiums.items(), key=lambda item:item[1], reverse = True):
         print(stadium + ": " + str(visits) + " time(s)")
 
+    print("\n")
 # -----------------------------------------------------------------------------------------------------------
 
 #def total_mileage(matches):
