@@ -157,7 +157,18 @@ def search_match():
 
 # -----------------------------------------------------------------------------------------------------------
 
-#def view_stats():
+def view_stats():
+
+# what do you want to see
+#1-total games
+#2-number of home games vs away games
+#3-win percentage (start with win:draw:lose stat)
+#4-total goals seen (+average per game)
+#5-total supported goals
+#6-average rating
+#7-List of stadiums visited (no of times)
+#8-total mileage (+ average mileage)
+
 
 
 # -----------------------------------------------------------------------------------------------------------
@@ -236,8 +247,8 @@ while True:
             print("\n---- Search match entries ----\n")
             search_match()
         case 5:
-            print("stats")
-            #view_stats()
+            print("\n---- View user statistics ----\n")
+            view_stats()
         case 6:
             print("\n---- Edit match entries ----\n")
             edit_match()
