@@ -212,12 +212,12 @@ def home_vs_away(matches, fav_team):
         data = match.strip().split("|")
         location = home_or_away(data, fav_team)
 
-    if location == "Home":
-        home_games += 1
-    elif location == "Away":
-        away_games += 1
-    else:
-        return "Unknown"
+        if location == "Home":
+            home_games += 1
+        elif location == "Away":
+            away_games += 1
+        else:
+            return "Unknown"
 
     print("Home Games: " + str(home_games))
     print("Away Games: " + str(away_games))
