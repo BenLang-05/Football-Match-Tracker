@@ -159,17 +159,33 @@ def search_match():
 
 def view_stats():
 
-# what do you want to see
-#1-total games
-#2-number of home games vs away games
-#3-win percentage (start with win:draw:lose stat)
-#4-total goals seen (+average per game)
-#5-total supported goals
-#6-average rating
-#7-List of stadiums visited (no of times)
-#8-total mileage (+ average mileage)
+    print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n")
+    stat_option = int(input("Please select a statistics option by typing the relevant number: ")
 
-
+    match stat_option:
+        case 1:
+            print("\n---- Total matches seen ----\n")
+            total_matches()
+        case 2:
+            print("\n---- Home vs Away ----\n")
+            home_vs_away()
+        case 3:
+            print("\n---- Win Percentage----\n")
+            win_percent()
+        case 4:
+            print("\n---- Total Goals ----\n")
+            total_goals()
+        case 5:
+            print("\n---- Average Rating ----\n")
+            average_rating()
+        case 6:
+            print("\n---- Stadiums Visited ----\n")
+            stadiums_visited()
+        case 7:
+            print("\n---- Total Mileage ----\n")
+            total_mileage()
+        case _:
+            print("\n---- Invalid entry ----")
 
 # -----------------------------------------------------------------------------------------------------------
 
