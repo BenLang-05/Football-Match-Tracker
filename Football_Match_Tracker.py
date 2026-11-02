@@ -354,8 +354,7 @@ def delete_match():
     for i in range(len(matches)):
         if matches[i].startswith(delete):
             del matches[i]
-
-        break
+            break
 
     with open("matches_Tracker.txt", "w") as f:
         f.writelines(matches)
