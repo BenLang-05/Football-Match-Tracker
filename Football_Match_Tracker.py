@@ -154,6 +154,20 @@ def edit_match():
 #Make sure this changes the text file. 
 #Dont write a new line without either changing or deleting the original one
 
+    for i in range(len(matches)):
+        if matches[i].startswith(edit):
+            data = matches[i].strip().split(",")
+
+            if change in [4,5,7,9]:
+                new_value = int(input("Enter the new data: "))
+            else:
+                new_value = input("Enter the new data: ")
+
+            data[change - 1] = str(new_value)
+            matches[i] = ",".join(data) + "\n"
+
+            break
+
 # -----------------------------------------------------------------------------------------------------------
 
 def delete_match():
@@ -163,7 +177,7 @@ def delete_match():
     for match in matches:
         simple_display(match)
 
-    delete = input("Please enter the date of the game you want to delete (in the form dd/mm/yyyy)")
+    delete = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
     
 # Code to delete match from the text file
 
