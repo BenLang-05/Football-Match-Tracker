@@ -176,7 +176,7 @@ def view_stats():
                 win_percent(matches, fav_team)
             case 4:
                 print("\n---- Total Goals ----\n")
-                #total_goals(matches)
+                total_goals(matches, fav_team)
             case 5:
                 print("\n---- Average Rating ----\n")
                 #average_rating(matches)
@@ -232,7 +232,30 @@ def win_percent(matches, fav_team):
     
 
 # -----------------------------------------------------------------------------------------------------------
-#def total_goals(matches):
+def total_goals(matches, fav_team):
+    tot_goals = 0
+    tot_team_goals = 0
+    
+    for match in matches:
+        data = match.strip().split("|")
+        location = home_or_away(data, fav_team)
+
+        goals_in_game = int(data[3]) + int(data[4])
+        tot_goals += goals_in_game
+        
+        if location == "Home":
+            tot_team_goals += int(data[3])
+        elif location == "Away":
+            tot_team_goals += int(data[4])
+        else:
+            continue
+
+    average_goals = (tot_team_goals / tot_goals) * 100
+    
+    print("You have seen " + str(tot_goals) + " goals in total across all games")
+    print("With " + fav_team + " scoring " + str(tot_team_goals) + " of those goals")
+    print("Averaging at " + str(round(average_goals,1)) + "% of the total goals you've seen\n")
+    
 
 # -----------------------------------------------------------------------------------------------------------
 #def average_rating(matches):
