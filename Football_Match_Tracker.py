@@ -158,34 +158,38 @@ def view_stats():
 
     with open("matches_Tracker.txt", "r") as f:
         matches = f.readlines()
-        
-    print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n")
-    stat_option = int(input("Please select a statistics option by typing the relevant number: "))
 
-    match stat_option:
-        case 1:
-            print("\n---- Total matches seen ----\n")
-            total_matches(matches)
-        case 2:
-            print("\n---- Home vs Away ----\n")
-            #home_vs_away(matches)
-        case 3:
-            print("\n---- Win Percentage----\n")
-            #win_percent(matches)
-        case 4:
-            print("\n---- Total Goals ----\n")
-            #total_goals(matches)
-        case 5:
-            print("\n---- Average Rating ----\n")
-            #average_rating(matches)
-        case 6:
-            print("\n---- Stadiums Visited ----\n")
-            #stadiums_visited(matches)
-        case 7:
-            print("\n---- Total Mileage ----\n")
-            #total_mileage(matches)
-        case _:
-            print("\n---- Invalid entry ----")
+    while True:
+            
+        print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n8. Return to menu \n")
+        stat_option = int(input("Please select a statistics option by typing the relevant number: "))
+        
+        match stat_option:
+            case 1:
+                print("\n---- Total matches seen ----\n")
+                total_matches(matches)
+            case 2:
+                print("\n---- Home vs Away ----\n")
+                #home_vs_away(matches)
+            case 3:
+                print("\n---- Win Percentage----\n")
+                #win_percent(matches)
+            case 4:
+                print("\n---- Total Goals ----\n")
+                #total_goals(matches)
+            case 5:
+                print("\n---- Average Rating ----\n")
+                #average_rating(matches)
+            case 6:
+                print("\n---- Stadiums Visited ----\n")
+                #stadiums_visited(matches)
+            case 7:
+                print("\n---- Total Mileage ----\n")
+                #total_mileage(matches)
+            case 8:
+                break
+            case _:
+                print("\n---- Invalid entry ----")
 
 # -----------------------------------------------------------------------------------------------------------
 def total_matches(matches):
