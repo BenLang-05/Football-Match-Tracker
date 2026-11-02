@@ -139,7 +139,7 @@ def search_match():
     with open("matches_Tracker.txt", "r") as f:
         matches = f.readlines()
 
-    search = input("What is it your looking for (enter search term)? ").lower()
+    search = input("What is it you're looking for (enter search term)? ").lower()
     print("\nResults containing: " + search.upper() + "\n")
 
     found = False
