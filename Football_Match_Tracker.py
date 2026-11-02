@@ -24,10 +24,13 @@ def display_match(match):
     print(f"Team Rating: {data[8]}")
     print("-------------------------------------------------------")
 
+# -----------------------------------------------------------------------------------------------------------
+
 def simple_display(match):
     data = match.strip().split("|")
 
     print(f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}")
+    print("-------------------------------------------------------")
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -63,8 +66,6 @@ def view_match():
     for match in matches:
         #data = match.strip().split("|")
         display_match(match)
-
-    
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -137,8 +138,21 @@ def sort_distance(reverse_order):
 
 # -----------------------------------------------------------------------------------------------------------
 
-#def edit_match():
+def edit_match():
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+        
+    for match in matches:
+        simple_display(match)
 
+    edit = input("Please enter the date of the game you want to delete (in the form dd/mm/yyyy)")
+    
+    print("\n1. Date \n2. Home Team  \n3. Away Team \n4. Home Score \n5. Away Score \n6. Stadium \n7. Distance \n8. Result \n9. Rating \n")
+    change = int(input("Please select the variable you would like to change by typing the relevant number: "))
+
+# if user selects 1 for date then ask them to input a new date and replace the old one with the new one. 
+#Make sure this changes the text file. 
+#Dont write a new line without either changing or deleting the original one
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -151,7 +165,7 @@ def delete_match():
 
     delete = input("Please enter the date of the game you want to delete (in the form dd/mm/yyyy)")
     
-
+# Code to delete match from the text file
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -178,8 +192,8 @@ while True:
             print("stats")
             #view_stats()
         case 6:
-            print("edit")
-            #edit_match()
+            print("\n---- Edit match entries ----\n")
+            edit_match()
         case 7:
             print("\n---- Delete match entries ----\n")
             delete_match()
@@ -190,8 +204,4 @@ while True:
             print("\n---- Invalid entry ----")
 
 
-
-#matches.sort(
-#    key=lambda match: datetime.strptime(match.date, "%d/%m/%Y")
-#)
 
