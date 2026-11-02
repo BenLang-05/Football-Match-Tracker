@@ -3,7 +3,7 @@ from datetime import datetime
 
 # -----------------------------------------------------------------------------------------------------------
 
-print("\nWELCOME TO THE FOOTBALL MATCH TRACKER APP!\n")
+print("\n---- WELCOME TO THE FOOTBALL MATCH TRACKER APP! ----\n")
 fav_team = input("Please enter the team you support: ")
 print("Good choice! \n")
 
