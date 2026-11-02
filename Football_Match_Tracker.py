@@ -170,7 +170,7 @@ def view_stats():
                 total_matches(matches)
             case 2:
                 print("\n---- Home vs Away ----\n")
-                home_vs_away(matches)
+                home_vs_away(matches, fav_team)
             case 3:
                 print("\n---- Win Percentage----\n")
                 #win_percent(matches)
