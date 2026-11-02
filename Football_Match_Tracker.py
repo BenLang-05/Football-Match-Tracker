@@ -1,0 +1,184 @@
+import sys
+from datetime import datetime
+
+class Match:
+    def __init__(self, date, homeTeam, awayTeam, homeScore, awayScore, stadium, distance, result, rating):
+        self.date = date
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.homeScore = homeScore
+        self.awayScore = awayScore
+        self.stadium = stadium
+        self.distance = distance
+        self.result = result
+        self.rating = rating
+        
+# -----------------------------------------------------------------------------------------------------------
+
+def display_match(match):
+    data = match.strip().split("|")
+
+    print(f"Date: {data[0]}")
+    print(f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}")
+    print(f"Travel: {data[6]} miles to {data[5]} stadium")
+    print(f"Team Rating: {data[8]}")
+    print("-------------------------------------------------------")
+
+# -----------------------------------------------------------------------------------------------------------
+
+def add_match():
+    date = input("Please enter the date in the form dd/mm/yyyy: ")
+    homeT = input("Please enter the home team: ")
+    awayT = input("Please enter the away team: ")
+    homeS = int(input("Please enter the home score: "))
+    awayS = int(input("Please enter the away score: "))
+    stadium = input("Please enter the stadium visited: ")
+    distance = float(input("Please enter the distance travelled to the stadium in miles: "))
+    result = input("Did your team win, lose or draw: ").lower()
+    rating = float(input("please rate your team's performance from 1 to 10: "))
+
+
+    match = Match(date, homeT, awayT, homeS, awayS, stadium, distance, result, rating)
+    with open("matches_Tracker.txt", "a") as f:
+        f.write(
+            f"{match.date}|{match.homeTeam}|{match.awayTeam}|"
+            f"{match.homeScore}|{match.awayScore}|"
+            f"{match.stadium}|{match.distance}|"
+            f"{match.result}|{match.rating}\n"
+        )
+
+    print("\n---- Match saved successfully! ----")
+
+# -----------------------------------------------------------------------------------------------------------
+
+def view_match():
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+
+    for match in matches:
+        #data = match.strip().split("|")
+        display_match(match)
+
+    
+
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_match():
+    print("1. Date Asc \n2. Date Desc\n3. Rating Asc \n4. Rating Desc \n5. Distance Asc \n6. Distance Desc \n")
+    sort_by = int(input("Please select a sorting option by typing the relevant number: "))
+
+    match sort_by:
+        case 1:
+            print("\n---- Date Ascending ----\n")
+            sort_date(False)
+        case 2:
+            print("\n---- Date Descending ----\n")
+            sort_date(True)
+        case 3:
+            print("\n---- Rating Ascending ----\n")
+            sort_rating(False)
+        case 4:
+            print("\n---- Rating Descending ----\n")
+            sort_rating(True)
+        case 5:
+            print("\n---- Distance Ascending ----\n")
+            sort_distance(False)
+        case 6:
+            print("\n---- Distance Descending ----\n")
+            sort_distance(True)
+        case _:
+            print("\n---- Invalid entry ----")
+
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_date(reverse_order):
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+
+    matches.sort(key=lambda match: datetime.strptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)
+
+    for match in matches:
+        display_match(match)
+
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_rating(reverse_order):
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+    matches.sort(key=lambda match: float(match.split("|")[8]),reverse=reverse_order)
+
+    for match in matches:
+        display_match(match)
+
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_distance(reverse_order):
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+    matches.sort(key=lambda match: float(match.split("|")[6]),reverse=reverse_order)
+    
+    for match in matches:
+        display_match(match)
+
+# -----------------------------------------------------------------------------------------------------------
+
+#def search_match():
+
+
+# -----------------------------------------------------------------------------------------------------------
+
+#def view_stats():
+
+
+# -----------------------------------------------------------------------------------------------------------
+
+#def edit_match():
+
+
+# -----------------------------------------------------------------------------------------------------------
+
+#def delete_match():
+
+
+# -----------------------------------------------------------------------------------------------------------
+
+
+while True:
+    
+    print("\n1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
+    functions = int(input("Please select an option by typing the relevant number: "))
+
+    match functions:
+        case 1:
+            print("\n---- Create a new match entry! ----\n")
+            add_match()
+        case 2:
+            print("\n---- View match entries ----\n")
+            view_match()
+        case 3:
+            print("\n---- Sort match entries ----\n")
+            sort_match()
+        case 4:
+            print("Search")
+            #search_match()
+        case 5:
+            print("stats")
+            #view_stats()
+        case 6:
+            print("edit")
+            #edit_match()
+        case 7:
+            print("\n---- Delete match entries ----\n")
+            #delete_match()
+        case 8:
+            print("\n---- Thankyou, Goodbye! ----\n")
+            sys.exit()
+        case _:
+            print("\n---- Invalid entry ----")
+
+
+
+#matches.sort(
+#    key=lambda match: datetime.strptime(match.date, "%d/%m/%Y")
+#)
+
