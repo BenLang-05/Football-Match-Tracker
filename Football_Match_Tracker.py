@@ -159,6 +159,10 @@ def view_stats():
     with open("matches_Tracker.txt", "r") as f:
         matches = f.readlines()
 
+    if len(matches) == 0:
+        print("\n---- No matches have been recorded yet! ----\n")
+        return
+
     while True:
             
         print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n8.Return to menu \n")
