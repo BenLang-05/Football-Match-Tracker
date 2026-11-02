@@ -263,7 +263,7 @@ def average_rating(matches, fav_team):
 
     for match in matches:
         data = match.strip().split("|")
-        total_rating += int(data[8])
+        total_rating += float(data[8])
 
     avg_rating = total_rating / len(matches)
 
