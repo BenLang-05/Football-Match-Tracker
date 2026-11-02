@@ -3,7 +3,7 @@ from datetime import datetime
 
 # -----------------------------------------------------------------------------------------------------------
 
-print("Welcome to the football match tracker app!")
+print("\nWelcome to the football match tracker app!").upper()
 fav_team = input("Please enter the team you support: ")
 print("Good choice! \n")
 
