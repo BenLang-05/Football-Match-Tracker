@@ -189,7 +189,7 @@ def view_stats():
 
 # -----------------------------------------------------------------------------------------------------------
 def total_matches(matches):
-    print("You have been to: " + str(len(matches)) + " matches")
+    print("You have been to: " + str(len(matches)) + " matches\n")
 # -----------------------------------------------------------------------------------------------------------
 #def home_vs_away(matches):
 
