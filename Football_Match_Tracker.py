@@ -179,7 +179,7 @@ def view_stats():
                 total_goals(matches, fav_team)
             case 5:
                 print("\n---- Average Rating ----\n")
-                #average_rating(matches)
+                average_rating(matches, fav_team)
             case 6:
                 print("\n---- Stadiums Visited ----\n")
                 #stadiums_visited(matches)
@@ -258,7 +258,17 @@ def total_goals(matches, fav_team):
     
 
 # -----------------------------------------------------------------------------------------------------------
-#def average_rating(matches):
+def average_rating(matches, fav_team):
+    total_rating = 0
+
+    for match in matches:
+        data = match.strip().split("|")
+        total_rating += int(data[8])
+
+    avg_rating = total_rating / len(matches)
+
+    print("You gave " + fav_team + " an average rating of " + str(round(avg_rating, 1)) + " across " + str(len(matches)) + " matches seen\n")
+
 
 # -----------------------------------------------------------------------------------------------------------
 #def stadiums_visited(matches):
