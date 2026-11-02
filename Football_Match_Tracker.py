@@ -161,7 +161,7 @@ def view_stats():
 
     while True:
             
-        print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n8. Return to menu \n")
+        print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n8.Return to menu \n")
         stat_option = int(input("Please select a statistics option by typing the relevant number: "))
         
         match stat_option:
@@ -189,7 +189,7 @@ def view_stats():
             case 8:
                 break
             case _:
-                print("\n---- Invalid entry ----")
+                print("\n---- Invalid entry ----\n")
 
 # -----------------------------------------------------------------------------------------------------------
 def total_matches(matches):
