@@ -201,10 +201,10 @@ def home_or_away(data, fav_team):
         return "Unknown"
 
 # -----------------------------------------------------------------------------------------------------------
-def total_matches(matches, fav_team):
+def total_matches(matches):
     print("You have been to: " + str(len(matches)) + " matches\n")
 # -----------------------------------------------------------------------------------------------------------
-def home_vs_away(matches):
+def home_vs_away(matches, fav_team):
     home_games = 0
     away_games = 0
 
