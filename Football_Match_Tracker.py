@@ -185,7 +185,7 @@ def view_stats():
                 stadiums_visited(matches)
             case 7:
                 print("\n---- Total Mileage ----\n")
-                #total_mileage(matches)
+                total_mileage(matches)
             case 8:
                 break
             case _:
@@ -295,7 +295,17 @@ def stadiums_visited(matches):
     print("\n")
 # -----------------------------------------------------------------------------------------------------------
 
-#def total_mileage(matches):
+def total_mileage(matches):
+    total_miles = 0
+    
+    for match in matches:
+        data = match.strip().split("|")
+        total_miles += float(data[6])
+        
+    avg_miles = total_miles / len(matches)
+    
+    print("You travelled " + str(total_miles) + " miles across " + str(len(matches)) + " matches")
+    print("At an average of " + str(round(avg_miles,1)) + " miles per game")
 
 # -----------------------------------------------------------------------------------------------------------
 
