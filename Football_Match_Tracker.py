@@ -143,7 +143,7 @@ def search_match():
     search = input("What is it your looking for (enter search term)? ").lower()
     print("\n Results containing: " + search.upper() + "\n")
 
-    found = false
+    found = False
     
     for match in matches:
         if search in match.lower():
