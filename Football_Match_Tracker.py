@@ -136,8 +136,15 @@ def sort_distance(reverse_order):
 
 # -----------------------------------------------------------------------------------------------------------
 
-#def search_match():
+def search_match():
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
 
+    search = input("\nWhat is it your looking for (enter search term)? ")
+
+    for match in matches:
+        if search in match:
+            simple_display(match)
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -174,7 +181,6 @@ def edit_match():
             
     with open("matches_Tracker.txt", "w") as f:
         f.writelines(matches)
-
 
     print("\n---- Match edited successfully! ----")
 
@@ -218,8 +224,8 @@ while True:
             print("\n---- Sort match entries ----\n")
             sort_match()
         case 4:
-            print("Search")
-            #search_match()
+            print("\n---- Search match entries ----\n")
+            search_match()
         case 5:
             print("stats")
             #view_stats()
