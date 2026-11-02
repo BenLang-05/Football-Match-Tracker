@@ -325,7 +325,7 @@ def delete_match():
 
 while True:
 
-    print("1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
+    print("\n1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
     functions = int(input("Please select an option by typing the relevant number: "))
 
     match functions:
