@@ -199,7 +199,7 @@ def home_or_away(data):
     elif data[2] == fav_team:
         return "Away"
     else:
-        return "Unknown"
+        continue
 
 # -----------------------------------------------------------------------------------------------------------
 
