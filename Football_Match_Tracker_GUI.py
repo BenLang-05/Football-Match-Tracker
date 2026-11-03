@@ -146,8 +146,30 @@ class Application(tk.Frame):
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Main_menu)
         self.btnReturn.pack(side="bottom")
 
+#--------------------------------------------------------------------------------------
 
+    def Save_match(self):
+        date = self.enterDate.get()
+        homeT = self.enterHomeT.get()
+        awayT = self.enterAwayT.get()
+        homeS = self.enterHomeS.get()
+        awayS = self.enterAwayS.get()
+        stadium = self.enterStad.get()
+        distance = self.enterDist.get()
+        result = self.enterResult.get()
+        rating = self.enterRating.get()
 
+        print(date)
+        print(homeT)
+        print(awayT)
+        print(homeS)
+        print(awayS)
+        print(stadium)
+        print(distance)
+        print(result)
+        print(rating)
+
+        
    
     
 
@@ -156,6 +178,7 @@ class Application(tk.Frame):
 
 
 #--------------------------------------------------------------------------------------
+
 root = tk.Tk()
 root.title('Football Match Tracker')
 root.geometry("350x450")
