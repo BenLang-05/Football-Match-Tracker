@@ -51,7 +51,7 @@ class Application(tk.Frame):
 
 #--------------------------------------------------------------------------------------
   
-  def Main_menu(self):
+    def Main_menu(self):
 
         for widget in self.winfo_children():
           widget.destroy()
