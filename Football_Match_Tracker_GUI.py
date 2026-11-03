@@ -19,7 +19,7 @@ class Application(tk.Frame):
     self.btnBegin = tk.Button(self, text="Begin", command=self.Main_menu)
     self.btnBegin.pack()
 
-    self.EXIT = tk.Button(self, text="EXIT", command=Welcome.destroy)
+    self.EXIT = tk.Button(self, text="EXIT", command=root.destroy)
     self.btnReturn.pack(side="bottom")
 
     
