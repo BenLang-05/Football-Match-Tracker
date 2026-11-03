@@ -62,7 +62,7 @@ class Application(tk.Frame):
         self.btnAdd = tk.Button(self, text="Add Match", command=self.Add_match)
         self.btnAdd.pack()
     
-        self.btnView = tk.Button(self, text="View Matches")
+        self.btnView = tk.Button(self, text="View Matches", command=self.View_match)
         self.btnView.pack()
     
         self.btnSort = tk.Button(self, text="Sort Matches")
@@ -172,11 +172,27 @@ class Application(tk.Frame):
         self.lblSaved = tk.Label(self, text="Match saved successfully!")
         self.lblSaved.pack()        
    
+#--------------------------------------------------------------------------------------
+
+    def display_match(self,match):
+        data = match.strip().split("|")
+
+        output = (f"Date: {data[0]}\n" 
+        f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
+        f"Travel: {data[6]} miles to {data[5]} stadium\n"
+        f"Team Rating: {data[8]}\n"
+        f"\n-------------------------------------------------------\n")
+
+        output_text.insert("end",output)
+
+#--------------------------------------------------------------------------------------
     
-
-
-
-
+    def View_match(self):
+        with open("matches_Tracker_GUI.txt", "r") as f:
+            matches = f.readlines()
+    
+        for match in matches:
+            self.display_match(match)
 
 #--------------------------------------------------------------------------------------
 
