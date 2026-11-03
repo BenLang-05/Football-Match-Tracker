@@ -162,12 +162,12 @@ class Application(tk.Frame):
         match = Match(date,homeT,awayT,homeS,awayS,stadium,distance,result,rating)
         
         with open("matches_Tracker_GUI.txt", "a") as f:
-        f.write(
-            f"{match.date}|{match.homeTeam}|{match.awayTeam}|"
-            f"{match.homeScore}|{match.awayScore}|"
-            f"{match.stadium}|{match.distance}|"
-            f"{match.result}|{match.rating}\n"
-        )
+            f.write(
+                f"{match.date}|{match.homeTeam}|{match.awayTeam}|"
+                f"{match.homeScore}|{match.awayScore}|"
+                f"{match.stadium}|{match.distance}|"
+                f"{match.result}|{match.rating}\n"
+            )
 
         self.lblSaved = tk.Label(self, text="Match saved successfully!")
         self.lblSaved.pack()        
