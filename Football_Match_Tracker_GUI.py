@@ -9,6 +9,10 @@ class Application(tk.Frame):
 
 
   def Welcome(self):
+    
+    for widget in self.winfo_children():
+      widget.destroy()
+    
     self.lblWelcome = tk.Label(self, text="WELCOME TO THE FOOTBALL MATCH TRACKER APP!")
     self.lblWelcome.pack()
 
@@ -18,8 +22,9 @@ class Application(tk.Frame):
     
   
   def Main_menu(self):
-    self.lblWelcome.destroy()
-    self.btnBegin.destroy()
+
+    for widget in self.winfo_children():
+      widget.destroy()
     
     self.lblMenu = tk.Label(self, text="Please select an option:")
     self.lblMenu.pack()
@@ -46,8 +51,8 @@ class Application(tk.Frame):
     self.btnDel.pack()
 
 
-    self.return = tk.Button(self, text="Return", fg="blue", command=self.Welcome)
-    self.return.pack(side="bottom")
+    self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Welcome)
+    self.btnReturn.pack(side="bottom")
 
     
 root = tk.Tk()
