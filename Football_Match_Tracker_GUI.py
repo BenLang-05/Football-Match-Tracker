@@ -14,15 +14,15 @@ class Match:
 
 #--------------------------------------------------------------------------------------
 
-dateVar = tk.StringVar()
-homeTVar = tk.StringVar()
-awayTVar = tk.StringVar()
-homeSVar = tk.IntVar()
-awaySVar = tk.IntVar()
-stadVar = tk.StringVar()
-mileVar = tk.FloatVar()
-resultVar = tk.StringVar()
-ratingVar = tk.FloatVar()
+#dateVar = tk.StringVar()
+#homeTVar = tk.StringVar()
+#awayTVar = tk.StringVar()
+#homeSVar = tk.IntVar()
+#awaySVar = tk.IntVar()
+#stadVar = tk.StringVar()
+#mileVar = tk.FloatVar()
+#resultVar = tk.StringVar()
+#ratingVar = tk.FloatVar()
 
 #--------------------------------------------------------------------------------------
 
