@@ -154,7 +154,7 @@ class Application(tk.Frame):
 #--------------------------------------------------------------------------------------
 root = tk.Tk()
 root.title('Football Match Tracker')
-root.geometry("300x600")
+root.geometry("350x450")
 
 app = Application(master=root)
 app.mainloop()
