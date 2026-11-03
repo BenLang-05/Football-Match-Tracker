@@ -14,18 +14,6 @@ class Match:
 
 #--------------------------------------------------------------------------------------
 
-#dateVar = tk.StringVar()
-#homeTVar = tk.StringVar()
-#awayTVar = tk.StringVar()
-#homeSVar = tk.IntVar()
-#awaySVar = tk.IntVar()
-#stadVar = tk.StringVar()
-#mileVar = tk.FloatVar()
-#resultVar = tk.StringVar()
-#ratingVar = tk.FloatVar()
-
-#--------------------------------------------------------------------------------------
-
 class Application(tk.Frame):
   
     def __init__(self, master=None):
@@ -34,7 +22,16 @@ class Application(tk.Frame):
         self.Welcome()
 
 #--------------------------------------------------------------------------------------
+    def Text_area(self):
+        self.scrollbar = tk.scrollbar(self)
+        self.output_text = tk.Text(self, width = 50, height = 20, yscrollcommand=self.scrollbar.set)
 
+        self.scrollbar.config(command=self.output_text.yview)
+        self.scrollbar.pack(side="right", fill="y")
+        self.output_text.pack(fill="both",expand=True)
+        
+#--------------------------------------------------------------------------------------
+    
     def Welcome(self):
     
         for widget in self.winfo_children():
@@ -181,7 +178,7 @@ class Application(tk.Frame):
         f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
         f"Travel: {data[6]} miles to {data[5]} stadium\n"
         f"Team Rating: {data[8]}\n"
-        f"\n-------------------------------------------\n")
+        f"\n-------------------------------------\n")
 
         self.output_text.insert("end",output)
 
@@ -192,8 +189,7 @@ class Application(tk.Frame):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.output_text = tk.Text(self, width=50, height=20)
-        self.output_text.pack()
+        self.Text_area()
 
         with open("matches_Tracker_GUI.txt", "r") as f:
             matches = f.readlines()
@@ -208,7 +204,7 @@ class Application(tk.Frame):
 
 root = tk.Tk()
 root.title('Football Match Tracker')
-root.geometry("350x450")
+root.geometry("350x475")
 
 app = Application(master=root)
 app.mainloop()
