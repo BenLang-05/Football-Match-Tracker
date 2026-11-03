@@ -23,7 +23,7 @@ class Application(tk.Frame):
 
 #--------------------------------------------------------------------------------------
     def Text_area(self):
-        self.scrollbar = tk.scrollbar(self)
+        self.scrollbar = tk.Scrollbar(self)
         self.output_text = tk.Text(self, width = 50, height = 20, yscrollcommand=self.scrollbar.set)
 
         self.scrollbar.config(command=self.output_text.yview)
