@@ -15,9 +15,11 @@ class Application(tk.Frame):
     self.QUIT.pack(side="bottom")
 
   def welcome(self):
-    print("Please select one of the following options:")
-
+      self.lblWelcome = tk.Label(self, text="Please select one of the following options:")
+      self.lblWelcome.pack()
+    
 root = tk.Tk()
 app = Application(master=root)
-#app.master.title('Football Match Tracker')
+app.master.title('Football Match Tracker')
+root.geometry("800x600")
 app.mainloop()
