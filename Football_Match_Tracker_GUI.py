@@ -51,7 +51,7 @@ class Application(tk.Frame):
 
     
 root = tk.Tk()
-app.master.title('Football Match Tracker')
+root.title('Football Match Tracker')
 root.geometry("800x600")
 
 app = Application(master=root)
