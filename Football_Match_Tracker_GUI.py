@@ -183,16 +183,26 @@ class Application(tk.Frame):
         f"Team Rating: {data[8]}\n"
         f"\n-------------------------------------------------------\n")
 
-        output_text.insert("end",output)
+        self.output_text.insert("end",output)
 
 #--------------------------------------------------------------------------------------
     
     def View_match(self):
+        
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        self.output_text = tk.Text(self, width=50, height=20)
+        self.output_text.pack()
+
         with open("matches_Tracker_GUI.txt", "r") as f:
             matches = f.readlines()
     
         for match in matches:
             self.display_match(match)
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Main_menu)
+        self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
