@@ -19,7 +19,7 @@ class Application(tk.Frame):
     self.btnBegin = tk.Button(self, text="Begin", command=self.Main_menu)
     self.btnBegin.pack()
 
-    self.EXIT = tk.Button(self, text="EXIT", command=root.destroy)
+    self.EXIT = tk.Button(self, text="EXIT", fg="blue", command=root.destroy)
     self.EXIT.pack(side="bottom")
 
     
@@ -60,7 +60,7 @@ class Application(tk.Frame):
     
 root = tk.Tk()
 root.title('Football Match Tracker')
-root.geometry("800x600")
+root.geometry("400x300")
 
 app = Application(master=root)
 app.mainloop()
