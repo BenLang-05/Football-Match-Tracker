@@ -181,7 +181,7 @@ class Application(tk.Frame):
         f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
         f"Travel: {data[6]} miles to {data[5]} stadium\n"
         f"Team Rating: {data[8]}\n"
-        f"\n-------------------------------------------------------\n")
+        f"\n-------------------------------------------n")
 
         self.output_text.insert("end",output)
 
