@@ -156,7 +156,7 @@ class Application(tk.Frame):
         awayS = self.enterAwayS.get()
         stadium = self.enterStad.get()
         distance = self.enterDist.get()
-        result = self.enterResult.get()
+        result = self.enterResult.get().lower()
         rating = self.enterRating.get()
 
         print(date)
