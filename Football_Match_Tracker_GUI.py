@@ -46,8 +46,8 @@ class Application(tk.Frame):
     self.btnDel.pack()
 
 
-    self.QUIT = tk.Button(self, text="QUIT", fg="blue", command=root.destroy)
-    self.QUIT.pack(side="bottom")
+    self.return = tk.Button(self, text="Return", fg="blue", command=self.Welcome)
+    self.return.pack(side="bottom")
 
     
 root = tk.Tk()
