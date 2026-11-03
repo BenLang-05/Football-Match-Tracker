@@ -140,7 +140,7 @@ class Application(tk.Frame):
     self.enterRating = tk.Entry(self)
     self.enterRating.pack()
       
-    self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Welcome)
+    self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Main_menu)
     self.btnReturn.pack(side="bottom")
     
 
