@@ -93,6 +93,37 @@ class Application(tk.Frame):
 
     self.lblAdd = tk.Label(self, text="Add a new match!")
     self.lblAdd.pack()
+      
+    self.lblDate = tk.Label(self, text="Please enter the date in the form dd/mm/yyyy:")
+    self.lblDate.pack()
+
+    self.lblHomeT = tk.Label(self, text="Please enter the home team:")
+    self.lblHomeT.pack()
+
+    self.lblAwayT = tk.Label(self, text="Please enter the away team:")
+    self.lblAwayT.pack()
+
+    self.lblHomeS = tk.Label(self, text="Please enter the home score:")
+    self.lblHomeS.pack()
+
+    self.lblAwayS = tk.Label(self, text="Please enter the away score:")
+    self.lblAwayS.pack()
+
+    self.lblStad = tk.Label(self, text="Please enter the stadium visited:")
+    self.lblStad.pack()
+
+    self.lblDist = tk.Label(self, text="Please enter the distance travelled to the stadium in miles:")
+    self.lblDist.pack()
+
+    self.lblResult = tk.Label(self, text="Did your team win, lose or draw:")
+    self.lblResult.pack()
+
+    self.lblRating = tk.Label(self, text="Please rate your team's performance from 1 to 10:")
+    self.lblRating.pack()
+
+    self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Welcome)
+    self.btnReturn.pack(side="bottom")
+    
 
    
     
