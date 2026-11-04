@@ -14,14 +14,6 @@ class Match:
 
 #--------------------------------------------------------------------------------------
 
-class Application(tk.Frame):
-  
-    def __init__(self, master=None):
-        tk.Frame.__init__(self, master)
-        self.pack()
-        self.welcome()
-
-#--------------------------------------------------------------------------------------
 def text_area(self):
     self.scrollbar = tk.Scrollbar(self)
     self.output_text = tk.Text(self, width = 50, height = 20, yscrollcommand=self.scrollbar.set)
@@ -210,6 +202,14 @@ def view_match(self):
 
     self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
     self.btnReturn.pack(side="bottom")
+
+#--------------------------------------------------------------------------------------
+class Application(tk.Frame):
+  
+    def __init__(self, master=None):
+        tk.Frame.__init__(self, master)
+        self.pack()
+        self.welcome()
 
 #--------------------------------------------------------------------------------------
 
