@@ -1,4 +1,5 @@
 import tkinter as tk
+from datetime import datetime
 
 class Match:
     def __init__(self, date, homeTeam, awayTeam, homeScore, awayScore, stadium, distance, result, rating):
@@ -249,8 +250,8 @@ class Application(tk.Frame):
         with open("matches_Tracker_GUI.txt", "r") as f:
             matches = f.readlines()
 
-        matches.sort(key=lambda match: datetime,striptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)
-    
+        matches.sort(key=lambda match: datetime.strptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)    
+        
         for match in matches:
             self.simple_display(match)
             
