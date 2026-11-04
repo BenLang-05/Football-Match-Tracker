@@ -19,7 +19,7 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         tk.Frame.__init__(self, master)
         self.pack()
-        self.Welcome()
+        self.welcome()
 
 #--------------------------------------------------------------------------------------
     def Text_area(self):
@@ -32,7 +32,7 @@ class Application(tk.Frame):
         
 #--------------------------------------------------------------------------------------
     
-    def Welcome(self):
+    def welcome(self):
     
         for widget in self.winfo_children():
           widget.destroy()
@@ -40,7 +40,7 @@ class Application(tk.Frame):
         self.lblWelcome = tk.Label(self, text="WELCOME TO THE FOOTBALL MATCH TRACKER APP!")
         self.lblWelcome.pack()
     
-        self.btnBegin = tk.Button(self, text="Begin", command=self.Main_menu)
+        self.btnBegin = tk.Button(self, text="Begin", command=self.main_menu)
         self.btnBegin.pack()
     
         self.EXIT = tk.Button(self, text="EXIT", fg="blue", command=root.destroy)
@@ -48,7 +48,7 @@ class Application(tk.Frame):
 
 #--------------------------------------------------------------------------------------
   
-    def Main_menu(self):
+    def main_menu(self):
 
         for widget in self.winfo_children():
           widget.destroy()
@@ -56,10 +56,10 @@ class Application(tk.Frame):
         self.lblMenu = tk.Label(self, text="Please select an option:")
         self.lblMenu.pack()
     
-        self.btnAdd = tk.Button(self, text="Add Match", command=self.Add_match)
+        self.btnAdd = tk.Button(self, text="Add Match", command=self.add_match)
         self.btnAdd.pack()
     
-        self.btnView = tk.Button(self, text="View Matches", command=self.View_match)
+        self.btnView = tk.Button(self, text="View Matches", command=self.view_match)
         self.btnView.pack()
     
         self.btnSort = tk.Button(self, text="Sort Matches")
@@ -78,12 +78,12 @@ class Application(tk.Frame):
         self.btnDel.pack()
     
     
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Welcome)
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.welcome)
         self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
-    def Add_match(self):
+    def add_match(self):
   
         for widget in self.winfo_children():
           widget.destroy()
@@ -137,15 +137,15 @@ class Application(tk.Frame):
         self.enterRating = tk.Entry(self)
         self.enterRating.pack()
     
-        self.btnSave = tk.Button(self, text="Save Match", command=self.Save_match)
+        self.btnSave = tk.Button(self, text="Save Match", command=self.save_match)
         self.btnSave.pack()
           
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Main_menu)
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
-    def Save_match(self):
+    def save_match(self):
         date = self.enterDate.get()
         homeT = self.enterHomeT.get()
         awayT = self.enterAwayT.get()
@@ -183,8 +183,10 @@ class Application(tk.Frame):
         self.output_text.insert("end",output)
 
 #--------------------------------------------------------------------------------------
-    
-    def View_match(self):
+    def simple_display
+#--------------------------------------------------------------------------------------
+
+    def view_match(self):
         
         for widget in self.winfo_children():
             widget.destroy()
@@ -197,7 +199,7 @@ class Application(tk.Frame):
         for match in matches:
             self.display_match(match)
 
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.Main_menu)
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
