@@ -14,6 +14,31 @@ class Match:
 
 #--------------------------------------------------------------------------------------
 
+class Application(tk.Frame):
+  
+    def __init__(self, master=None):
+        tk.Frame.__init__(self, master)
+        self.pack()
+        self.welcome()
+
+#--------------------------------------------------------------------------------------
+
+    def welcome(self):
+    
+        for widget in self.winfo_children():
+          widget.destroy()
+        
+        self.lblWelcome = tk.Label(self, text="WELCOME TO THE FOOTBALL MATCH TRACKER APP!")
+        self.lblWelcome.pack()
+    
+        self.btnBegin = tk.Button(self, text="Begin", command=self.main_menu)
+        self.btnBegin.pack()
+    
+        self.EXIT = tk.Button(self, text="EXIT", fg="blue", command=root.destroy)
+        self.EXIT.pack(side="bottom")
+
+#--------------------------------------------------------------------------------------
+
 def text_area(self):
     self.scrollbar = tk.Scrollbar(self)
     self.output_text = tk.Text(self, width = 50, height = 20, yscrollcommand=self.scrollbar.set)
@@ -22,22 +47,6 @@ def text_area(self):
     self.scrollbar.pack(side="right", fill="y")
     self.output_text.pack(fill="both",expand=True)
     
-#--------------------------------------------------------------------------------------
-
-def welcome(self):
-
-    for widget in self.winfo_children():
-      widget.destroy()
-    
-    self.lblWelcome = tk.Label(self, text="WELCOME TO THE FOOTBALL MATCH TRACKER APP!")
-    self.lblWelcome.pack()
-
-    self.btnBegin = tk.Button(self, text="Begin", command=self.main_menu)
-    self.btnBegin.pack()
-
-    self.EXIT = tk.Button(self, text="EXIT", fg="blue", command=root.destroy)
-    self.EXIT.pack(side="bottom")
-
 #--------------------------------------------------------------------------------------
 
 def main_menu(self):
@@ -202,14 +211,6 @@ def view_match(self):
 
     self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
     self.btnReturn.pack(side="bottom")
-
-#--------------------------------------------------------------------------------------
-class Application(tk.Frame):
-  
-    def __init__(self, master=None):
-        tk.Frame.__init__(self, master)
-        self.pack()
-        self.welcome()
 
 #--------------------------------------------------------------------------------------
 
