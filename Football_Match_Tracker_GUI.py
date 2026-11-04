@@ -63,7 +63,7 @@ class Application(tk.Frame):
         self.btnView = tk.Button(self, text="View Matches", command=self.view_match)
         self.btnView.pack()
     
-        self.btnSort = tk.Button(self, text="Sort Matches")
+        self.btnSort = tk.Button(self, text="Sort Matches", command=self.sort_menu)
         self.btnSort.pack()
     
         self.btnSearch = tk.Button(self, text="Search Matches")
@@ -207,12 +207,84 @@ class Application(tk.Frame):
     
         for match in matches:
             self.display_match(match)
-            #self.simple_display(match)
     
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
+    def sort_menu(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+        
+        self.lblSortMenu = tk.Label(self, text="Please select an option:\n\n Sort by:")
+        self.lblSortMenu.pack()
+    
+        self.btnDateAsc = tk.Button(self, text="Date Ascending", command=self.sort_date(False))
+        self.btnDateAsc.pack()
+    
+        self.btnDateDesc = tk.Button(self, text="Date Descending", command=self.sort_date(True))
+        self.btnDateDesc.pack()
+    
+        self.btnRatingAsc = tk.Button(self, text="Rating Ascending")
+        self.btnRatingAsc.pack()
+    
+        self.btnRatingDesc = tk.Button(self, text="Rating Descending")
+        self.btnRatingDesc.pack()
+    
+        self.btnDistAsc = tk.Button(self, text="Distance Ascending")
+        self.btnDistAsc.pack()
+    
+        self.btnDistDesc = tk.Button(self, text="Rating Descending")
+        self.btnDistDesc.pack()
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+        self.btnReturn.pack(side="bottom")
+#--------------------------------------------------------------------------------------
+    def sort_date(self, reverse_order):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        with open("matches_Tracker_GUI.txt", "r") as f:
+            matches = f.readlines()
+
+        matches.sort(key=lambda match: datetime,striptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)
+    
+        for match in matches:
+            self.simple_display(match)
+            
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.sort_menu)
+        self.btnReturn.pack(side="bottom")
+
+        
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
+
+
 
 root = tk.Tk()
 root.title('Football Match Tracker')
