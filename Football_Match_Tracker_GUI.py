@@ -22,7 +22,7 @@ class Application(tk.Frame):
         self.welcome()
 
 #--------------------------------------------------------------------------------------
-    def Text_area(self):
+    def text_area(self):
         self.scrollbar = tk.Scrollbar(self)
         self.output_text = tk.Text(self, width = 50, height = 20, yscrollcommand=self.scrollbar.set)
 
@@ -191,7 +191,7 @@ class Application(tk.Frame):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.Text_area()
+        self.text_area()
 
         with open("matches_Tracker_GUI.txt", "r") as f:
             matches = f.readlines()
