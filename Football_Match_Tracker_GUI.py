@@ -183,7 +183,15 @@ class Application(tk.Frame):
         self.output_text.insert("end",output)
 
 #--------------------------------------------------------------------------------------
-    def simple_display
+    def simple_display(self, match):
+
+        data = match.strip().split("|")
+
+        output = (f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
+        f"\n-------------------------------------\n")
+
+        self.output_text.insert("end",output)
+
 #--------------------------------------------------------------------------------------
 
     def view_match(self):
@@ -197,7 +205,8 @@ class Application(tk.Frame):
             matches = f.readlines()
     
         for match in matches:
-            self.display_match(match)
+            #self.display_match(match)
+            self.simple_display(match)
 
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
