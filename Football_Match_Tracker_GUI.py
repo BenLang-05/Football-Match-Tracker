@@ -2,18 +2,6 @@ import tkinter as tk
 from matchLib import *
 from datetime import datetime
 
-class Match:
-    def __init__(self, date, homeTeam, awayTeam, homeScore, awayScore, stadium, distance, result, rating):
-        self.date = date
-        self.homeTeam = homeTeam
-        self.awayTeam = awayTeam
-        self.homeScore = homeScore
-        self.awayScore = awayScore
-        self.stadium = stadium
-        self.distance = distance
-        self.result = result
-        self.rating = rating
-
 #--------------------------------------------------------------------------------------
 
 class Application(tk.Frame):
@@ -49,7 +37,7 @@ class Application(tk.Frame):
         self.scrollbar.pack(side="right", fill="y")
         self.output_text.pack(fill="both",expand=True)
         
-    #--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     
     def main_menu(self):
     
@@ -84,7 +72,7 @@ class Application(tk.Frame):
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.welcome)
         self.btnReturn.pack(side="bottom")
     
-    #--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     
     def add_match(self):
     
@@ -146,7 +134,7 @@ class Application(tk.Frame):
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
     
-    #--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     
     def save_match(self):
         date = self.enterDate.get()
@@ -172,30 +160,7 @@ class Application(tk.Frame):
         self.lblSaved = tk.Label(self, text="Match saved successfully!")
         self.lblSaved.pack()        
     
-    #--------------------------------------------------------------------------------------
-    
-    def display_match(self,match):
-        data = match.strip().split("|")
-    
-        output = (f"Date: {data[0]}\n" 
-        f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
-        f"Travel: {data[6]} miles to {data[5]} stadium\n"
-        f"Team Rating: {data[8]}\n"
-        f"\n----------------------------------------\n")
-    
-        self.output_text.insert("end",output)
-    
-    #--------------------------------------------------------------------------------------
-    def simple_display(self, match):
-    
-        data = match.strip().split("|")
-    
-        output = (f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
-        f"\n----------------------------------------\n")
-    
-        self.output_text.insert("end",output)
-    
-    #--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     
     def view_match(self):
         
@@ -204,11 +169,10 @@ class Application(tk.Frame):
     
         self.text_area()
     
-        with open("matches_Tracker_GUI.txt", "r") as f:
-            matches = f.readlines()
+        matches = load_matches()
     
         for match in matches:
-            self.display_match(match)
+            self.output_text.insert("end", display_match(match) + "\n")
     
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
@@ -221,10 +185,10 @@ class Application(tk.Frame):
         self.lblSortMenu = tk.Label(self, text="Please select an option:\n\n Sort by:")
         self.lblSortMenu.pack()
     
-        self.btnDateAsc = tk.Button(self, text="Date Ascending", command=self.sort_date(False))
+        self.btnDateAsc = tk.Button(self, text="Date Ascending", command = lambda: self.show_sort_date(False))
         self.btnDateAsc.pack()
     
-        self.btnDateDesc = tk.Button(self, text="Date Descending", command=self.sort_date(True))
+        self.btnDateDesc = tk.Button(self, text="Date Descending", command = lambda: self.show_sort_date(True))
         self.btnDateDesc.pack()
     
         self.btnRatingAsc = tk.Button(self, text="Rating Ascending")
@@ -236,30 +200,26 @@ class Application(tk.Frame):
         self.btnDistAsc = tk.Button(self, text="Distance Ascending")
         self.btnDistAsc.pack()
     
-        self.btnDistDesc = tk.Button(self, text="Rating Descending")
+        self.btnDistDesc = tk.Button(self, text="Distance Descending")
         self.btnDistDesc.pack()
 
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
 #--------------------------------------------------------------------------------------
-    def sort_date(self, reverse_order):
+    def show_sort_date(self, reverse_order):
         for widget in self.winfo_children():
             widget.destroy()
     
         self.text_area()
     
-        with open("matches_Tracker_GUI.txt", "r") as f:
-            matches = f.readlines()
-
-        matches.sort(key=lambda match: datetime.strptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)    
+        matches = sort_date(reverse_order)
         
         for match in matches:
-            self.simple_display(match)
+            self.output_text.insert("end", simple_display(match) + "\n")
             
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.sort_menu)
         self.btnReturn.pack(side="bottom")
 
-        
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
