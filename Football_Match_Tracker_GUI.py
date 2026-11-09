@@ -268,28 +268,28 @@ class Application(tk.Frame):
 #--------------------------------------------------------------------------------------
 
     def stats_menu(self):
-      for widget in self.winfo_children():
+        for widget in self.winfo_children():
             widget.destroy()
         
-        self.lblStatsMenu = tk.Label(self, text="Please select a statistics option to view:\n\n Sort by:")
+        self.lblStatsMenu = tk.Label(self, text="Please select a statistics option to view:\n")
         self.lblStatsMenu.pack()
     
-        self.btnHva = tk.Button(self, text="Home Vs Away Games", command = )
+        self.btnHva = tk.Button(self, text="Home Vs Away Games", command = self.show_hva)
         self.btnHva.pack()
     
-        self.btnWinPercent = tk.Button(self, text="Win Percentage", command = )
-        self.btnwinPercent.pack()
+        self.btnWinPercent = tk.Button(self, text="Win Percentage", command = self.show_win_percent)
+        self.btnWinPercent.pack()
     
-        self.btnTotGoals = tk.Button(self, text="Total Goals", command = )
-        self.btTotGoals.pack()
+        self.btnTotGoals = tk.Button(self, text="Total Goals", command = self.show_total_goals)
+        self.btnTotGoals.pack()
     
-        self.btnAvgRating = tk.Button(self, text="Average Rating", command = )
+        self.btnAvgRating = tk.Button(self, text="Average Rating", command = self.show_avg_rating)
         self.btnAvgRating.pack()
     
-        self.btnStadVisited = tk.Button(self, text="Stadiums Visited", command = )
+        self.btnStadVisited = tk.Button(self, text="Stadiums Visited", command = self.show_stad_visited)
         self.btnStadVisited.pack()
     
-        self.btnTotMiles = tk.Button(self, text="Total Mileage", command = )
+        self.btnTotMiles = tk.Button(self, text="Total Mileage", command = self.show_total_miles)
         self.btnTotMiles.pack()
 
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
@@ -297,16 +297,113 @@ class Application(tk.Frame):
       
 #--------------------------------------------------------------------------------------
 
+    def show_hva(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = load_matches()
+
+        home_games, away_games = home_vs_away(matches, self.fav_team)
+
+        self.output_text.insert("end", "Home Games: " + str(home_games) + "\n")
+        self.output_text.insert("end", "Away Games: " + str(away_games) + "\n")
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.stats_menu)
+        self.btnReturn.pack(side="bottom")
+
 #--------------------------------------------------------------------------------------
+    
+    def show_win_percent(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = load_matches()
+
+        percent, no_of_wins = win_percent(matches)
+
+        self.output_text.insert("end", self.fav_team + " had a " + str(percent) + "% win rate\n")
+        self.output_text.insert("end", "Winning " + str(no_of_wins) + " out of " + str(len(matches)) + " matches you visited\n")
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.stats_menu)
+        self.btnReturn.pack(side="bottom")
+     
+#--------------------------------------------------------------------------------------
+
+    def show_total_goals(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = load_matches()
+
+        tot_goals, tot_team_goals, average_goals = total_goals(matches, self.fav_team)
+
+        self.output_text.insert("end", "You have seen " + str(tot_goals) + " goals in total across all games\n")
+        self.output_text.insert("end", "With " + self.fav_team + " scoring " + str(tot_team_goals) + " of those goals\n")
+        self.output_text.insert("end", "Averaging at " + str(average_goals) + "% of the total goals you've seen\n")
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.stats_menu)
+        self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
-#--------------------------------------------------------------------------------------
+    def show_avg_rating(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = load_matches()
+
+        avg_rating = average_rating(matches)
+
+        self.output_text.insert("end", "You gave " + self.fav_team + " an average rating of " + str(avg_rating) + "/10 across " + str(len(matches)) + " matches seen\n")
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.stats_menu)
+        self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
+      def show_stad_visited(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = load_matches()
+
+        stadiums = stadiums_visited(matches)
+      
+        self.output_text.insert("end", "You have visited the following stadiums:\n")
+        for stadium, visits in stadiums:
+            self.output_text.insert("end", stadium + ": " + str(visits) + " time(s)\n")
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.stats_menu)
+        self.btnReturn.pack(side="bottom")
+        
 #--------------------------------------------------------------------------------------
 
+    def show_total_miles(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = load_matches()
+
+        total_miles, avg_miles = total_mileage(matches)
+      
+        self.output_text.insert("end", "You travelled " + str(total_miles) + " miles across " + str(len(matches)) + " matches\n")
+        self.output_text.insert("end", "At an average of " + str(avg_miles) + " miles per game\n")
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.stats_menu)
+        self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
