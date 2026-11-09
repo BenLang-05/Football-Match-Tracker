@@ -369,7 +369,7 @@ class Application(tk.Frame):
 
 #--------------------------------------------------------------------------------------
 
-      def show_stad_visited(self):
+    def show_stad_visited(self):
         for widget in self.winfo_children():
             widget.destroy()
     
