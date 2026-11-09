@@ -59,7 +59,7 @@ class Application(tk.Frame):
         self.btnSearch = tk.Button(self, text="Search Matches")
         self.btnSearch.pack()
     
-        self.btnStats = tk.Button(self, text="View Statistics")
+        self.btnStats = tk.Button(self, text="View Statistics", command=self.stats_menu)
         self.btnStats.pack()
     
         self.btnEdit = tk.Button(self, text="Edit Match")
@@ -254,6 +254,34 @@ class Application(tk.Frame):
       
 #--------------------------------------------------------------------------------------
 
+    def stats_menu(self):
+      for widget in self.winfo_children():
+            widget.destroy()
+        
+        self.lblStatsMenu = tk.Label(self, text="Please select a statistics option to view:\n\n Sort by:")
+        self.lblStatsMenu.pack()
+    
+        self.btnHva = tk.Button(self, text="Home Vs Away Games", command = )
+        self.btnHva.pack()
+    
+        self.btnWinPercent = tk.Button(self, text="Win Percentage", command = )
+        self.btnwinPercent.pack()
+    
+        self.btnTotGoals = tk.Button(self, text="Total Goals", command = )
+        self.btTotGoals.pack()
+    
+        self.btnAvgRating = tk.Button(self, text="Average Rating", command = )
+        self.btnAvgRating.pack()
+    
+        self.btnStadVisited = tk.Button(self, text="Stadiums Visited", command = )
+        self.btnStadVisited.pack()
+    
+        self.btnTotMiles = tk.Button(self, text="Total Mileage", command = )
+        self.btnTotMiles.pack()
+
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+        self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
