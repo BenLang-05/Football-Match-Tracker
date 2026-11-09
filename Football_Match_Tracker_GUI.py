@@ -191,16 +191,16 @@ class Application(tk.Frame):
         self.btnDateDesc = tk.Button(self, text="Date Descending", command = lambda: self.show_sort_date(True))
         self.btnDateDesc.pack()
     
-        self.btnRatingAsc = tk.Button(self, text="Rating Ascending")
+        self.btnRatingAsc = tk.Button(self, text="Rating Ascending", command = lambda: self.show_sort_rating(False))
         self.btnRatingAsc.pack()
     
-        self.btnRatingDesc = tk.Button(self, text="Rating Descending")
+        self.btnRatingDesc = tk.Button(self, text="Rating Descending", command = lambda: self.show_sort_rating(True)
         self.btnRatingDesc.pack()
     
-        self.btnDistAsc = tk.Button(self, text="Distance Ascending")
+        self.btnDistAsc = tk.Button(self, text="Distance Ascending", command = lambda: self.show_sort_distance(False))
         self.btnDistAsc.pack()
     
-        self.btnDistDesc = tk.Button(self, text="Distance Descending")
+        self.btnDistDesc = tk.Button(self, text="Distance Descending", command = lambda: self.show_sort_distance(True))
         self.btnDistDesc.pack()
 
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
@@ -222,8 +222,36 @@ class Application(tk.Frame):
 
 #--------------------------------------------------------------------------------------
 
+    def show_sort_rating(self, reverse_order):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = sort_rating(reverse_order)
+        
+        for match in matches:
+            self.output_text.insert("end", display_match(match) + "\n")
+            
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.sort_menu)
+        self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
-
+    
+    def show_sort_distance(self, reverse_order):
+        for widget in self.winfo_children():
+            widget.destroy()
+    
+        self.text_area()
+    
+        matches = sort_distance(reverse_order)
+        
+        for match in matches:
+            self.output_text.insert("end", display_match(match) + "\n")
+            
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.sort_menu)
+        self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------
