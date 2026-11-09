@@ -24,29 +24,6 @@ class Match:
         
 # -----------------------------------------------------------------------------------------------------------
 
-def display_match(match):
-    data = match.strip().split("|")
-
-    return(
-        f"Date: {data[0]}\n"
-        f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
-        f"Travel: {data[6]} miles to {data[5]} stadium\n"
-        f"Team Rating: {data[8]}\n"
-        f"\n-------------------------------------------------------"
-    )
-
-# -----------------------------------------------------------------------------------------------------------
-
-def simple_display(match):
-    data = match.strip().split("|")
-
-    return(
-        f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
-        f"\n-------------------------------------------------------"
-    )
-
-# -----------------------------------------------------------------------------------------------------------
-
 def add_match():
     date = input("Please enter the date in the form dd/mm/yyyy: ")
     homeT = input("Please enter the home team: ")
