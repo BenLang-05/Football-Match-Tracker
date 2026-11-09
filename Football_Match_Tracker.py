@@ -27,19 +27,23 @@ class Match:
 def display_match(match):
     data = match.strip().split("|")
 
-    print(f"Date: {data[0]}")
-    print(f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}")
-    print(f"Travel: {data[6]} miles to {data[5]} stadium")
-    print(f"Team Rating: {data[8]}")
-    print("\n-------------------------------------------------------")
+    return(
+        f"Date: {data[0]}\n"
+        f"Match: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
+        f"Travel: {data[6]} miles to {data[5]} stadium\n"
+        f"Team Rating: {data[8]}\n"
+        f"\n-------------------------------------------------------"
+    )
 
 # -----------------------------------------------------------------------------------------------------------
 
 def simple_display(match):
     data = match.strip().split("|")
 
-    print(f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}")
-    print("\n-------------------------------------------------------")
+    return(
+        f"Match: {data[0]}: {data[1]} {data[3]}-{data[4]} {data[2]}\n"
+        f"\n-------------------------------------------------------"
+    )
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -73,7 +77,7 @@ def view_match():
         matches = f.readlines()
 
     for match in matches:
-        display_match(match)
+        print(display_match(match))
 
 # -----------------------------------------------------------------------------------------------------------
 
@@ -86,32 +90,32 @@ def sort_match():
             print("\n---- Date Ascending ----\n")
             sorted_matches = sort_date(False)
             for match in sorted_matches:
-                simple_display(match)
+                print(simple_display(match))
         case 2:
             print("\n---- Date Descending ----\n")
             sorted_matches = sort_date(True)
             for match in sorted_matches:
-                simple_display(match)
+                print(simple_display(match))
         case 3:
             print("\n---- Rating Ascending ----\n")
             sorted_matches = sort_rating(False)
             for match in sorted_matches:
-                display_match(match)
+                print(display_match(match))
         case 4:
             print("\n---- Rating Descending ----\n")
             sorted_matches = sort_rating(True)
             for match in sorted_matches:
-                display_match(match)
+                print(display_match(match))
         case 5:
             print("\n---- Distance Ascending ----\n")
             sorted_matches = sort_distance(False)
             for match in sorted_matches:
-                display_match(match)
+                print(display_match(match))
         case 6:
             print("\n---- Distance Descending ----\n")
             sorted_matches = sort_distance(True)
             for match in sorted_matches:
-                display_match(match)
+                print(display_match(match))
         case _:
             print("\n---- Invalid entry ----")
 
@@ -128,7 +132,7 @@ def search_match():
     
     for match in matches:
         if search in match.lower():
-            display_match(match)
+            print(display_match(match))
             found = True
 
     if not found:
@@ -201,7 +205,7 @@ def edit_match():
         matches = f.readlines()
         
     for match in matches:
-        simple_display(match)
+        print(simple_display(match))
 
     edit = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
     
@@ -236,7 +240,7 @@ def delete_match():
         matches = f.readlines()
         
     for match in matches:
-        simple_display(match)
+        print(simple_display(match))
 
     delete = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
 
