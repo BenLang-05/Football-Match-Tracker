@@ -11,44 +11,43 @@ print("Good choice!")
 # -----------------------------------------------------------------------------------------------------------
 
 def add_match():
-    date = input("Please enter the date in the form dd/mm/yyyy: ")
-    homeT = input("Please enter the home team: ")
-    awayT = input("Please enter the away team: ")
-    homeS = int(input("Please enter the home score: "))
-    awayS = int(input("Please enter the away score: "))
-    stadium = input("Please enter the stadium visited: ")
-    distance = float(input("Please enter the distance travelled to the stadium in miles: "))
-    result = input("Did your team win, lose or draw: ").lower()
-    rating = float(input("please rate your team's performance from 1 to 10: "))
+     date = input("Please enter the date in the form dd/mm/yyyy: ")
+     homeT = input("Please enter the home team: ")
+     awayT = input("Please enter the away team: ")
+     homeS = int(input("Please enter the home score: "))
+     awayS = int(input("Please enter the away score: "))
+     stadium = input("Please enter the stadium visited: ")
+     distance = float(input("Please enter the distance travelled to the stadium in miles: "))
+     result = input("Did your team win, lose or draw: ").lower()
+     rating = float(input("please rate your team's performance from 1 to 10: "))
 
 
-    match = Match(date, homeT, awayT, homeS, awayS, stadium, distance, result, rating)
-    with open("matches_Tracker.txt", "a") as f:
-        f.write(
-            f"{match.date}|{match.homeTeam}|{match.awayTeam}|"
-            f"{match.homeScore}|{match.awayScore}|"
-            f"{match.stadium}|{match.distance}|"
-            f"{match.result}|{match.rating}\n"
-        )
+     match = Match(date, homeT, awayT, homeS, awayS, stadium, distance, result, rating)
+     with open("matches_Tracker.txt", "a") as f:
+          f.write(
+               f"{match.date}|{match.homeTeam}|{match.awayTeam}|"
+               f"{match.homeScore}|{match.awayScore}|"
+               f"{match.stadium}|{match.distance}|"
+               f"{match.result}|{match.rating}\n"
+          )
 
-    print("\n---- Match saved successfully! ----\n")
+     print("\n---- Match saved successfully! ----\n")
 
 # -----------------------------------------------------------------------------------------------------------
 
 def view_match():
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
-
-    for match in matches:
-        print(display_match(match))
+     matches = load_matches()
+     
+     for match in matches:
+          print(display_match(match))
 
 # -----------------------------------------------------------------------------------------------------------
 
 def sort_match():
-    print("1. Date Asc \n2. Date Desc\n3. Rating Asc \n4. Rating Desc \n5. Distance Asc \n6. Distance Desc \n")
-    sort_by = int(input("Please select a sorting option by typing the relevant number: "))
+     print("1. Date Asc \n2. Date Desc\n3. Rating Asc \n4. Rating Desc \n5. Distance Asc \n6. Distance Desc \n")
+     sort_by = int(input("Please select a sorting option by typing the relevant number: "))
 
-    match sort_by:
+     match sort_by:
         case 1:
             print("\n---- Date Ascending ----\n")
             sorted_matches = sort_date(False)
@@ -85,172 +84,172 @@ def sort_match():
 # -----------------------------------------------------------------------------------------------------------
 
 def search_match():
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+     
+     matches = load_matches()
+     
+     search = input("What is it you're looking for (enter search term)? ").lower()
+     print("\nResults containing: " + search.upper() + "\n")
 
-    search = input("What is it you're looking for (enter search term)? ").lower()
-    print("\nResults containing: " + search.upper() + "\n")
-
-    found = False
-    
-    for match in matches:
+     found = False
+     
+     for match in matches:
         if search in match.lower():
             print(display_match(match))
             found = True
-
-    if not found:
+     
+     if not found:
         print("\n---- No matches found! ----")
 
 # -----------------------------------------------------------------------------------------------------------
 
 def view_stats():
 
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+     matches = load_matches()
 
-    if len(matches) == 0:
-        print("\n---- No matches have been recorded yet! ----\n")
-        return
 
-    while True:
+     if len(matches) == 0:
+          print("\n---- No matches have been recorded yet! ----\n")
+          return
+
+     while True:
             
-        print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n8.Return to menu \n")
-        stat_option = int(input("Please select a statistics option by typing the relevant number: "))
-        
-        match stat_option:
-            case 1:
-                print("\n---- Total matches seen ----\n")
-                print("You have been to: " + str(len(matches)) + " matches\n")
-            case 2:
-                print("\n---- Home vs Away ----\n")
-                home_games, away_games = home_vs_away(matches, fav_team)
-                print("Home Games: " + str(home_games))
-                print("Away Games: " + str(away_games) + "\n")
-            case 3:
-                print("\n---- Win Percentage----\n")
-                percent, no_of_wins = win_percent(matches)
-                print(fav_team + " had a " + str(percent) + "% win rate")
-                print("Winning " + str(no_of_wins) + " out of " + str(len(matches)) + " matches you visited\n")
-            case 4:
-                print("\n---- Total Goals ----\n")
-                tot_goals, tot_team_goals, average_goals = total_goals(matches, fav_team)
-                print("You have seen " + str(tot_goals) + " goals in total across all games")
-                print("With " + fav_team + " scoring " + str(tot_team_goals) + " of those goals")
-                print("Averaging at " + str(average_goals) + "% of the total goals you've seen\n")
-    
-            case 5:
-                print("\n---- Average Rating ----\n")
-                avg_rating = average_rating(matches)
-                print("You gave " + fav_team + " an average rating of " + str(avg_rating) + "/10 across " + str(len(matches)) + " matches seen\n")
+          print("1.Total matches seen \n2.Number of home games vs away games \n3.Win percentage \n4.Total goals seen \n5.Average match rating \n6.Stadiums visited \n7.Total and average mileage \n8.Return to menu \n")
+          stat_option = int(input("Please select a statistics option by typing the relevant number: "))
 
-            case 6:
-                print("\n---- Stadiums Visited ----\n")
-                stadiums = stadiums_visited(matches)
-                print("You have visited the following stadiums:\n")
-                for stadium, visits in stadiums:
-                    print(stadium + ": " + str(visits) + " time(s)")
-
-                print("\n")
-            case 7:
-                print("\n---- Total Mileage ----\n")
-                total_miles, avg_miles = total_mileage(matches)
-                print("You travelled " + str(total_miles) + " miles across " + str(len(matches)) + " matches")
-                print("At an average of " + str(avg_miles) + " miles per game\n")
-            case 8:
-                break
-            case _:
-                print("\n---- Invalid entry ----\n")
+          match stat_option:
+               case 1:
+                     print("\n---- Total matches seen ----\n")
+                     print("You have been to: " + str(len(matches)) + " matches\n")
+               case 2:
+                     print("\n---- Home vs Away ----\n")
+                     home_games, away_games = home_vs_away(matches, fav_team)
+                     print("Home Games: " + str(home_games))
+                     print("Away Games: " + str(away_games) + "\n")
+               case 3:
+                     print("\n---- Win Percentage----\n")
+                     percent, no_of_wins = win_percent(matches)
+                     print(fav_team + " had a " + str(percent) + "% win rate")
+                     print("Winning " + str(no_of_wins) + " out of " + str(len(matches)) + " matches you visited\n")
+               case 4:
+                     print("\n---- Total Goals ----\n")
+                     tot_goals, tot_team_goals, average_goals = total_goals(matches, fav_team)
+                     print("You have seen " + str(tot_goals) + " goals in total across all games")
+                     print("With " + fav_team + " scoring " + str(tot_team_goals) + " of those goals")
+                     print("Averaging at " + str(average_goals) + "% of the total goals you've seen\n")
+                    
+               case 5:
+                     print("\n---- Average Rating ----\n")
+                     avg_rating = average_rating(matches)
+                     print("You gave " + fav_team + " an average rating of " + str(avg_rating) + "/10 across " + str(len(matches)) + " matches seen\n")
+               
+               case 6:
+                     print("\n---- Stadiums Visited ----\n")
+                     stadiums = stadiums_visited(matches)
+                     print("You have visited the following stadiums:\n")
+                     for stadium, visits in stadiums:
+                          print(stadium + ": " + str(visits) + " time(s)")
+                    
+                     print("\n")
+               case 7:
+                     print("\n---- Total Mileage ----\n")
+                     total_miles, avg_miles = total_mileage(matches)
+                     print("You travelled " + str(total_miles) + " miles across " + str(len(matches)) + " matches")
+                     print("At an average of " + str(avg_miles) + " miles per game\n")
+               case 8:
+                     break
+               case _:
+                     print("\n---- Invalid entry ----\n")
 
 # -----------------------------------------------------------------------------------------------------------
 
 def edit_match():
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+     matches = load_matches()
+
         
-    for match in matches:
-        print(simple_display(match))
+     for match in matches:
+          print(simple_display(match))
 
-    edit = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
-    
-    print("\n1. Date \n2. Home Team  \n3. Away Team \n4. Home Score \n5. Away Score \n6. Stadium \n7. Distance \n8. Result \n9. Rating \n")
-    change = int(input("Please select the variable you would like to change by typing the relevant number: "))
+     edit = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
+     
+     print("\n1. Date \n2. Home Team  \n3. Away Team \n4. Home Score \n5. Away Score \n6. Stadium \n7. Distance \n8. Result \n9. Rating \n")
+     change = int(input("Please select the variable you would like to change by typing the relevant number: "))
 
-    for i in range(len(matches)):
-        if matches[i].startswith(edit):
-            data = matches[i].strip().split("|")
+     for i in range(len(matches)):
+          if matches[i].startswith(edit):
+               data = matches[i].strip().split("|")
 
-            if change in [4,5]:
-                new_value = int(input("Enter the new data: "))
-            elif change in [7,9]:
-                new_value = float(input("Enter the new data: "))
-            else:
-                new_value = input("Enter the new data: ")
+          if change in [4,5]:
+               new_value = int(input("Enter the new data: "))
+          elif change in [7,9]:
+               new_value = float(input("Enter the new data: "))
+          else:
+               new_value = input("Enter the new data: ")
 
-            data[change - 1] = str(new_value)
-            matches[i] = "|".join(data) + "\n"
-
-            break
+          data[change - 1] = str(new_value)
+          matches[i] = "|".join(data) + "\n"
+          
+          break
             
-    with open("matches_Tracker.txt", "w") as f:
-        f.writelines(matches)
+     with open("matches_Tracker.txt", "w") as f:
+          f.writelines(matches)
 
-    print("\n---- Match edited successfully! ----")
+     print("\n---- Match edited successfully! ----")
 
 # -----------------------------------------------------------------------------------------------------------
 
 def delete_match():
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+     matches = load_matches()
+
         
-    for match in matches:
-        print(simple_display(match))
+     for match in matches:
+          print(simple_display(match))
 
-    delete = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
+     delete = input("\nPlease enter the date of the game you want to delete (in the form dd/mm/yyyy): ")
 
-    for i in range(len(matches)):
-        if matches[i].startswith(delete):
-            del matches[i]
-            break
+     for i in range(len(matches)):
+          if matches[i].startswith(delete):
+               del matches[i]
+               break
 
-    with open("matches_Tracker.txt", "w") as f:
-        f.writelines(matches)
+     with open("matches_Tracker.txt", "w") as f:
+          f.writelines(matches)
 
-    print("\n---- Match deleted successfully! ----")
+     print("\n---- Match deleted successfully! ----")
 
 # -----------------------------------------------------------------------------------------------------------
 
 while True:
 
-    print("\n1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
-    functions = int(input("Please select an option by typing the relevant number: "))
+     print("\n1. Add Match \n2. View Matches \n3. Sort Matches \n4. Search Matches \n5. View Statistics \n6. Edit Match \n7. Delete Match \n8. Exit Application \n")
+     functions = int(input("Please select an option by typing the relevant number: "))
 
-    match functions:
-        case 1:
-            print("\n---- Create a new match entry! ----\n")
-            add_match()
-        case 2:
-            print("\n---- View match entries ----\n")
-            view_match()
-        case 3:
-            print("\n---- Sort match entries ----\n")
-            sort_match()
-        case 4:
-            print("\n---- Search match entries ----\n")
-            search_match()
-        case 5:
-            print("\n---- View user statistics ----\n")
-            view_stats()
-        case 6:
-            print("\n---- Edit match entries ----\n")
-            edit_match()
-        case 7:
-            print("\n---- Delete match entries ----\n")
-            delete_match()
-        case 8:
-            print("\n---- Thankyou, Goodbye! ----\n")
-            sys.exit()
-        case _:
-            print("\n---- Invalid entry ----")
+     match functions:
+          case 1:
+               print("\n---- Create a new match entry! ----\n")
+               add_match()
+          case 2:
+               print("\n---- View match entries ----\n")
+               view_match()
+          case 3:
+               print("\n---- Sort match entries ----\n")
+               sort_match()
+          case 4:
+               print("\n---- Search match entries ----\n")
+               search_match()
+          case 5:
+               print("\n---- View user statistics ----\n")
+               view_stats()
+          case 6:
+               print("\n---- Edit match entries ----\n")
+               edit_match()
+          case 7:
+               print("\n---- Delete match entries ----\n")
+               delete_match()
+          case 8:
+               print("\n---- Thankyou, Goodbye! ----\n")
+               sys.exit()
+          case _:
+               print("\n---- Invalid entry ----")
 
 
 
