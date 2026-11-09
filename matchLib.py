@@ -11,13 +11,13 @@ def home_or_away(data, fav_team):
 
 # -----------------------------------------------------------------------------------------------------------
 
-def home_vs_away(matches):
+def home_vs_away(matches, fav_team):
     home_games = 0
     away_games = 0
 
     for match in matches:
         data = match.strip().split("|")
-        location = home_or_away(data)
+        location = home_or_away(data, fav_team)
 
         if location == "Home":
             home_games += 1
@@ -42,13 +42,13 @@ def win_percent(matches):
     
 # -----------------------------------------------------------------------------------------------------------
 
-def total_goals(matches):
+def total_goals(matches, fav_team):
     tot_goals = 0
     tot_team_goals = 0
     
     for match in matches:
         data = match.strip().split("|")
-        location = home_or_away(data)
+        location = home_or_away(data, fav_team)
 
         goals_in_game = int(data[3]) + int(data[4])
         tot_goals += goals_in_game
