@@ -175,7 +175,7 @@ def view_stats():
                 print("You have been to: " + str(len(matches)) + " matches\n")
             case 2:
                 print("\n---- Home vs Away ----\n")
-                home_games, away_games = home_vs_away(matches)
+                home_games, away_games = home_vs_away(matches, fav_team)
                 print("Home Games: " + str(home_games))
                 print("Away Games: " + str(away_games) + "\n")
             case 3:
@@ -185,7 +185,7 @@ def view_stats():
                 print("Winning " + str(no_of_wins) + " out of " + str(len(matches)) + " matches you visited\n")
             case 4:
                 print("\n---- Total Goals ----\n")
-                tot_goals, tot_team_goals, average_goals = total_goals(matches)
+                tot_goals, tot_team_goals, average_goals = total_goals(matches, fav_team)
                 print("You have seen " + str(tot_goals) + " goals in total across all games")
                 print("With " + fav_team + " scoring " + str(tot_team_goals) + " of those goals")
                 print("Averaging at " + str(average_goals) + "% of the total goals you've seen\n")
