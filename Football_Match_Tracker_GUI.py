@@ -140,12 +140,12 @@ class Application(tk.Frame):
         date = self.enterDate.get()
         homeT = self.enterHomeT.get()
         awayT = self.enterAwayT.get()
-        homeS = self.enterHomeS.get()
-        awayS = self.enterAwayS.get()
+        homeS = int(self.enterHomeS.get())
+        awayS = int(self.enterAwayS.get())
         stadium = self.enterStad.get()
-        distance = self.enterDist.get()
+        distance = float(self.enterDist.get())
         result = self.enterResult.get().lower()
-        rating = self.enterRating.get()
+        rating = float(self.enterRating.get())
     
         match = Match(date,homeT,awayT,homeS,awayS,stadium,distance,result,rating)
         
