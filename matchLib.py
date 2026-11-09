@@ -13,7 +13,15 @@ class Match:
         self.distance = distance
         self.result = result
         self.rating = rating
-   
+
+# -----------------------------------------------------------------------------------------------------------
+# Load/Read Matches Functions
+# -----------------------------------------------------------------------------------------------------------
+
+def load_matches():
+    with open("matches_Tracker.txt", "r") as f:
+        return f.readlines()
+        
 # -----------------------------------------------------------------------------------------------------------
 # Display Matches Functions
 # -----------------------------------------------------------------------------------------------------------
@@ -44,8 +52,7 @@ def simple_display(match):
 # -----------------------------------------------------------------------------------------------------------
 
 def sort_date(reverse_order):
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+    matches = load_matches()
 
     matches.sort(key=lambda match: datetime.strptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)
 
@@ -54,8 +61,8 @@ def sort_date(reverse_order):
 # -----------------------------------------------------------------------------------------------------------
 
 def sort_rating(reverse_order):
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+    matches = load_matches()
+    
     matches.sort(key=lambda match: float(match.split("|")[8]),reverse=reverse_order)
 
     return matches
@@ -63,8 +70,8 @@ def sort_rating(reverse_order):
 # -----------------------------------------------------------------------------------------------------------
 
 def sort_distance(reverse_order):
-    with open("matches_Tracker.txt", "r") as f:
-        matches = f.readlines()
+    matches = load_matches()
+    
     matches.sort(key=lambda match: float(match.split("|")[6]),reverse=reverse_order)
     
     return matches
