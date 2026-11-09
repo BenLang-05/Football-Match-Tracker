@@ -20,13 +20,26 @@ class Application(tk.Frame):
         
         self.lblWelcome = tk.Label(self, text="WELCOME TO THE FOOTBALL MATCH TRACKER APP!")
         self.lblWelcome.pack()
-    
-        self.btnBegin = tk.Button(self, text="Begin", command=self.main_menu)
+
+        self.lblTeam = tk.Label(self, text="Please Enter Your Favourite Team: \n(The team you wish to input details for...)")
+        self.lblTeam.pack()
+
+        self.enterTeam = tk.Entry(self)
+        self.enterTeam.pack()
+      
+        self.btnBegin = tk.Button(self, text="Begin", command=self.star_app)
         self.btnBegin.pack()
     
         self.EXIT = tk.Button(self, text="EXIT", fg="blue", command=root.destroy)
         self.EXIT.pack(side="bottom")
 
+#--------------------------------------------------------------------------------------
+
+    def start_app(self):
+        self.fav_team = self.enterTeam.get()
+        if not self.fav_team:
+          return
+        self.main_menu()
 #--------------------------------------------------------------------------------------
 
     def text_area(self):
