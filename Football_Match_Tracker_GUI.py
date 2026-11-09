@@ -194,7 +194,7 @@ class Application(tk.Frame):
         self.btnRatingAsc = tk.Button(self, text="Rating Ascending", command = lambda: self.show_sort_rating(False))
         self.btnRatingAsc.pack()
     
-        self.btnRatingDesc = tk.Button(self, text="Rating Descending", command = lambda: self.show_sort_rating(True)
+        self.btnRatingDesc = tk.Button(self, text="Rating Descending", command = lambda: self.show_sort_rating(True))
         self.btnRatingDesc.pack()
     
         self.btnDistAsc = tk.Button(self, text="Distance Ascending", command = lambda: self.show_sort_distance(False))
