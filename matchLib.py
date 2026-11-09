@@ -15,12 +15,18 @@ class Match:
         self.rating = rating
 
 # -----------------------------------------------------------------------------------------------------------
-# Load/Read Matches Functions
+# Load/Save Matches Functions
 # -----------------------------------------------------------------------------------------------------------
 
 def load_matches():
     with open("matches_Tracker.txt", "r") as f:
         return f.readlines()
+
+# -----------------------------------------------------------------------------------------------------------
+
+def save_matches(matches):
+    with open("matches_Tracker.txt", "w") as f:
+        f.writelines(matches)
         
 # -----------------------------------------------------------------------------------------------------------
 # Display Matches Functions
