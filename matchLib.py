@@ -1,4 +1,36 @@
 # -----------------------------------------------------------------------------------------------------------
+# Sort Matches Functions
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_date(reverse_order):
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+
+    matches.sort(key=lambda match: datetime.strptime(match.split("|")[0], "%d/%m/%Y"), reverse=reverse_order)
+
+    return matches
+
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_rating(reverse_order):
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+    matches.sort(key=lambda match: float(match.split("|")[8]),reverse=reverse_order)
+
+    return matches
+
+# -----------------------------------------------------------------------------------------------------------
+
+def sort_distance(reverse_order):
+    with open("matches_Tracker.txt", "r") as f:
+        matches = f.readlines()
+    matches.sort(key=lambda match: float(match.split("|")[6]),reverse=reverse_order)
+    
+    return matches
+
+# -----------------------------------------------------------------------------------------------------------
+# View Statistics Functions
+# -----------------------------------------------------------------------------------------------------------
 
 def home_or_away(data, fav_team):
     if data[1] == fav_team:
@@ -7,7 +39,6 @@ def home_or_away(data, fav_team):
         return "Away"
     else:
         return "Unknown"
-
 
 # -----------------------------------------------------------------------------------------------------------
 
