@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------------------------------
 
-def home_or_away(data):
+def home_or_away(data, fav_team):
     if data[1] == fav_team:
         return "Home"
     elif data[2] == fav_team:
