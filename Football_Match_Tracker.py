@@ -190,8 +190,7 @@ def edit_match():
           
           break
             
-     with open("matches_Tracker.txt", "w") as f:
-          f.writelines(matches)
+     save_matches(matches)
 
      print("\n---- Match edited successfully! ----")
 
@@ -211,8 +210,7 @@ def delete_match():
                del matches[i]
                break
 
-     with open("matches_Tracker.txt", "w") as f:
-          f.writelines(matches)
+     save_matches(matches)
 
      print("\n---- Match deleted successfully! ----")
 
