@@ -1,4 +1,20 @@
 # -----------------------------------------------------------------------------------------------------------
+# Match Class
+# -----------------------------------------------------------------------------------------------------------
+
+class Match:
+    def __init__(self, date, homeTeam, awayTeam, homeScore, awayScore, stadium, distance, result, rating):
+        self.date = date
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.homeScore = homeScore
+        self.awayScore = awayScore
+        self.stadium = stadium
+        self.distance = distance
+        self.result = result
+        self.rating = rating
+   
+# -----------------------------------------------------------------------------------------------------------
 # Display Matches Functions
 # -----------------------------------------------------------------------------------------------------------
 
