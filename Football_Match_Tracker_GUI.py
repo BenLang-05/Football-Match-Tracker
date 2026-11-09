@@ -27,7 +27,7 @@ class Application(tk.Frame):
         self.enterTeam = tk.Entry(self)
         self.enterTeam.pack()
       
-        self.btnBegin = tk.Button(self, text="Begin", command=self.star_app)
+        self.btnBegin = tk.Button(self, text="Begin", command=self.start_app)
         self.btnBegin.pack()
     
         self.EXIT = tk.Button(self, text="EXIT", fg="blue", command=root.destroy)
