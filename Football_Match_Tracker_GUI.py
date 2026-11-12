@@ -78,7 +78,7 @@ class Application(tk.Frame):
         self.btnEdit = tk.Button(self, text="Edit Match", command=self.edit_menu)
         self.btnEdit.pack()
     
-        self.btnDel = tk.Button(self, text="Delete Match")
+        self.btnDel = tk.Button(self, text="Delete Match", command=self.delete_menu)
         self.btnDel.pack()
     
     
@@ -470,6 +470,7 @@ class Application(tk.Frame):
       
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
         
     def edit_options(self):
@@ -567,8 +568,56 @@ class Application(tk.Frame):
       
         self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
+
+    def delete_menu(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+          
+        self.text_area()
+
+        matches = load_matches()
+            
+        for match in matches:
+            self.output_text.insert("end", simple_display(match) + "\n")
+          
+        self.lblDeleteMenu = tk.Label(self, text="Please enter the date of the game you want to delete (in the form dd/mm/yyyy): \n")
+        self.lblDeleteMenu.pack()
+      
+        self.enterDelete = tk.Entry(self)
+        self.enterDelete.pack()
+
+        self.btnDelete = tk.Button(self, text="Delete", command = self.save_delete)
+        self.btnDelete.pack()
+        
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+        self.btnReturn.pack(side="bottom")
+      
 #--------------------------------------------------------------------------------------
+
+    def save_delete(self):
+              
+        self.dateForDelete = self.enterDelete.get()
+        
+        matches = load_matches()
+
+        for i in range(len(matches)):
+            if matches[i].startswith(self.dateForDelete):
+                del matches[i]
+                break
+              
+        save_matches(matches)
+
+        for widget in self.winfo_children():
+            widget.destroy() 
+
+        self.lblDeleted = tk.Label(self, text="Match deleted successfully!")
+        self.lblDeleted.pack() 
+      
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+        self.btnReturn.pack(side="bottom")
+
 #--------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------
