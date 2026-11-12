@@ -192,7 +192,7 @@ class Application(tk.Frame):
 
 #--------------------------------------------------------------------------------------
     
-      def sort_menu(self):
+    def sort_menu(self):
         for widget in self.winfo_children():
             widget.destroy()
         
