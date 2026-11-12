@@ -1,3 +1,6 @@
+# I acknowledge the use of Microsoft Copilot (version GPT-4, Microsoft, https://copilot.microsoft.com/) 
+# to review my code to provide feedback so I could make appropriate modifications.
+
 from datetime import datetime
 
 # -----------------------------------------------------------------------------------------------------------
