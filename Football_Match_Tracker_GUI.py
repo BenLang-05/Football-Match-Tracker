@@ -529,7 +529,7 @@ class Application(tk.Frame):
         self.btnSaveEdit = tk.Button(self, text="Save Edit", command = self.save_edit)
         self.btnSaveEdit.pack()
       
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.edit_options)
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.edit_menu)
         self.btnReturn.pack(side="bottom")
       
 #--------------------------------------------------------------------------------------
@@ -537,12 +537,11 @@ class Application(tk.Frame):
     def save_edit(self):
 
         new_value = self.enterNewData.get()
-        
-        for widget in self.winfo_children():
-            widget.destroy()
           
         matches = load_matches()
 
+        found = False
+      
         for i in range(len(matches)):
             if matches[i].startswith(self.dateForEdit):
                 data = matches[i].strip().split("|")
@@ -556,6 +555,7 @@ class Application(tk.Frame):
 
                 matches[i] = "|".join(data) + "\n"
 
+                found = True
                 break
         save_matches(matches)
 
@@ -601,9 +601,12 @@ class Application(tk.Frame):
         
         matches = load_matches()
 
+        found = False
+      
         for i in range(len(matches)):
             if matches[i].startswith(self.dateForDelete):
                 del matches[i]
+                found = True
                 break
               
         save_matches(matches)
