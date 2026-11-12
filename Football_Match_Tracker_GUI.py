@@ -468,7 +468,7 @@ class Application(tk.Frame):
         self.btnEdit.pack()
         
       
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.edit_menu)
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
         self.btnReturn.pack(side="bottom")
 #--------------------------------------------------------------------------------------
         
@@ -533,6 +533,40 @@ class Application(tk.Frame):
         self.btnReturn.pack(side="bottom")
       
 #--------------------------------------------------------------------------------------
+
+    def save_edit(self):
+
+        new_value = self.enterNewData.get()
+        
+        for widget in self.winfo_children():
+            widget.destroy()
+          
+        matches = load_matches()
+
+        for i in range(len(matches)):
+            if matches[i].startswith(self.dateForEdit):
+                data = matches[i].strip().split("|")
+
+                if self.index in [3,4]:
+                    new_value = int(new_value)
+                elif self.index in [6,8]:
+                    new_value = float(new_value)
+                    
+                data[self.index] = str(new_value)
+
+                matches[i] = "|".join(data) + "\n"
+
+                break
+        save_matches(matches)
+
+        for widget in self.winfo_children():
+            widget.destroy()     
+
+        self.lblEdited = tk.Label(self, text="Match edited successfully!")
+        self.lblEdited.pack() 
+      
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+        self.btnReturn.pack(side="bottom")
 #--------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------
