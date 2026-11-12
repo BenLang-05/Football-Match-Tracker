@@ -75,7 +75,7 @@ class Application(tk.Frame):
         self.btnStats = tk.Button(self, text="View Statistics", command=self.stats_menu)
         self.btnStats.pack()
     
-        self.btnEdit = tk.Button(self, text="Edit Match" command=self.edit_menu)
+        self.btnEdit = tk.Button(self, text="Edit Match", command=self.edit_menu)
         self.btnEdit.pack()
     
         self.btnDel = tk.Button(self, text="Delete Match")
