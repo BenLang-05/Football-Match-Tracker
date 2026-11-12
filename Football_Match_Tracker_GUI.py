@@ -539,8 +539,6 @@ class Application(tk.Frame):
         new_value = self.enterNewData.get()
           
         matches = load_matches()
-
-        found = False
       
         for i in range(len(matches)):
             if matches[i].startswith(self.dateForEdit):
@@ -555,7 +553,6 @@ class Application(tk.Frame):
 
                 matches[i] = "|".join(data) + "\n"
 
-                found = True
                 break
         save_matches(matches)
 
@@ -600,13 +597,10 @@ class Application(tk.Frame):
         self.dateForDelete = self.enterDelete.get()
         
         matches = load_matches()
-
-        found = False
       
         for i in range(len(matches)):
             if matches[i].startswith(self.dateForDelete):
                 del matches[i]
-                found = True
                 break
               
         save_matches(matches)
