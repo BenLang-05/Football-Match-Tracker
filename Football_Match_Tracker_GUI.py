@@ -75,7 +75,7 @@ class Application(tk.Frame):
         self.btnStats = tk.Button(self, text="View Statistics", command=self.stats_menu)
         self.btnStats.pack()
     
-        self.btnEdit = tk.Button(self, text="Edit Match")
+        self.btnEdit = tk.Button(self, text="Edit Match" command=self.edit_menu)
         self.btnEdit.pack()
     
         self.btnDel = tk.Button(self, text="Delete Match")
@@ -191,7 +191,8 @@ class Application(tk.Frame):
         self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
-    def sort_menu(self):
+    
+      def sort_menu(self):
         for widget in self.winfo_children():
             widget.destroy()
         
@@ -408,52 +409,136 @@ class Application(tk.Frame):
 
     def search_menu(self):
         
-      for widget in self.winfo_children():
-            widget.destroy()
-
-      self.lblSearch = tk.Label(self, text="What is it you're looking for (enter search term)?")
-      self.lblSearch.pack()
-
-      self.enterSearch = tk.Entry(self)
-      self.enterSearch.pack()
-
-      self.btnSearch = tk.Button(self,text="Search", command = self.search_results)
-      self.btnSearch.pack()
-
-      self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
-      self.btnReturn.pack(side="bottom")
+        for widget in self.winfo_children():
+              widget.destroy()
+  
+        self.lblSearch = tk.Label(self, text="What is it you're looking for (enter search term)?")
+        self.lblSearch.pack()
+  
+        self.enterSearch = tk.Entry(self)
+        self.enterSearch.pack()
+  
+        self.btnSearch = tk.Button(self,text="Search", command = self.search_results)
+        self.btnSearch.pack()
+  
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+        self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
     def search_results(self):
 
-      search = self.enterSearch.get().lower()
-
-      for widget in self.winfo_children():
-          widget.destroy()
+        search = self.enterSearch.get().lower()
+  
+        for widget in self.winfo_children():
+            widget.destroy()
+        
+        self.text_area()
+        matches = load_matches()
+  
+        found = False
       
-      self.text_area()
-      matches = load_matches()
+        self.output_text.insert("end", "\nResults containing: " + search.upper() + "\n\n")
+  
+        for match in matches:
+            if search in match.lower():
+                self.output_text.insert("end", display_match(match) + "\n")
+                found = True
+  
+  
+        if not found:
+            self.output_text.insert("end", "\n---- No matches found! ----")
+  
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.search_menu)
+        self.btnReturn.pack(side="bottom")
 
-      found = False
+#--------------------------------------------------------------------------------------
+
+    def edit_menu(self):
+        
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        self.lblEditMenu = tk.Label(self, text="Please enter the date of the game you want to edit (in the form dd/mm/yyyy): \n")
+        self.lblEditMenu.pack()
+      
+        self.enterEdit = tk.Entry(self)
+        self.enterEdit.pack()
+
+        self.btnEdit = tk.Button(self, text="Edit", command = self.edit_options)
+        self.btnEdit.pack()
+        
+      
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.edit_menu)
+        self.btnReturn.pack(side="bottom")
+#--------------------------------------------------------------------------------------
+        
+    def edit_options(self):
+
+        self.dateForEdit = self.enterEdit.get()
+
+        for widget in self.winfo_children():
+            widget.destroy()
+      
+        self.lblEditMatch = tk.Label(self, text="Editing the match that took place on: " + self.dateForEdit + "\n\n")
+        self.lblEditMatch.pack()
+      
+        self.btnEditDate = tk.Button(self, text="Edit Date", command = lambda: self.edit_field(0))
+        self.btnEditDate.pack()
     
-      self.output_text.insert("end", "\nResults containing: " + search.upper() + "\n\n")
+        self.btnEditHTeam = tk.Button(self, text="Edit Home Team", command = lambda: self.edit_field(1))
+        self.btnEditHTeam.pack()
+    
+        self.btnEditATeam = tk.Button(self, text="Edit Away Team", command = lambda: self.edit_field(2))
+        self.btnEditATeam.pack()
+    
+        self.btnEditHScore = tk.Button(self, text="Edit Home Score", command = lambda: self.edit_field(3))
+        self.btnEditHScore.pack()
+    
+        self.btnEditAScore = tk.Button(self, text="Edit Away Score", command = lambda: self.edit_field(4))
+        self.btnEditAScore.pack()
+    
+        self.btnEditStad = tk.Button(self, text="Edit Satdium", command = lambda: self.edit_field(5))
+        self.btnEditStad.pack()
 
-      for match in matches:
-          if search in match.lower():
-              self.output_text.insert("end", display_match(match) + "\n")
-              found = True
+        self.btnEditDist = tk.Button(self, text="Edit Distance", command = lambda: self.edit_field(6))
+        self.btnEditDist.pack()
+      
+        self.btnEditResult = tk.Button(self, text="Edit Result", command = lambda: self.edit_field(7))
+        self.btnEditResult.pack()
+      
+        self.btnEditRating = tk.Button(self, text="Edit Rating", command = lambda: self.edit_field(8))
+        self.btnEditRating.pack()
 
-
-      if not found:
-          self.output_text.insert("end", "\n---- No matches found! ----")
-
-      self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.search_menu)
-      self.btnReturn.pack(side="bottom")
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.edit_menu)
+        self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
-#--------------------------------------------------------------------------------------
+    def edit_field(self, index):
+        self.index = index
 
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        self.lblNewData = tk.Label(self, text="Please enter the new data:\n")
+        self.lblNewData.pack()
+      
+        self.enterNewData = tk.Entry(self)
+        self.enterNewData.pack()
+
+        self.btnSaveEdit = tk.Button(self, text="Save Edit", command = self.save_edit)
+        self.btnSaveEdit.pack()
+      
+        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.edit_options)
+        self.btnReturn.pack(side="bottom")
+      
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 
 
 root = tk.Tk()
