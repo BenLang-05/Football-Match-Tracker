@@ -497,7 +497,7 @@ class Application(tk.Frame):
         self.btnEditAScore = tk.Button(self, text="Edit Away Score", command = lambda: self.edit_field(4))
         self.btnEditAScore.pack()
     
-        self.btnEditStad = tk.Button(self, text="Edit Satdium", command = lambda: self.edit_field(5))
+        self.btnEditStad = tk.Button(self, text="Edit Stadium", command = lambda: self.edit_field(5))
         self.btnEditStad.pack()
 
         self.btnEditDist = tk.Button(self, text="Edit Distance", command = lambda: self.edit_field(6))
