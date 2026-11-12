@@ -69,7 +69,7 @@ class Application(tk.Frame):
         self.btnSort = tk.Button(self, text="Sort Matches", command=self.sort_menu)
         self.btnSort.pack()
     
-        self.btnSearch = tk.Button(self, text="Search Matches")
+        self.btnSearch = tk.Button(self, text="Search Matches", command=self.search_menu)
         self.btnSearch.pack()
     
         self.btnStats = tk.Button(self, text="View Statistics", command=self.stats_menu)
@@ -410,50 +410,45 @@ class Application(tk.Frame):
         
       for widget in self.winfo_children():
             widget.destroy()
-                
 
+      self.lblSearch = tk.Label(self, text="What is it you're looking for (enter search term)?")
+      self.lblSearch.pack()
 
-        self.lblSearch = tk.Label(self, text="What is it you're looking for (enter search term)?")
-        self.lblSearch.pack()
+      self.enterSearch = tk.Entry(self)
+      self.enterSearch.pack()
 
-        self.enterSearch = tk.Entry(self)
-        self.enterSearch.pack()
+      self.btnSearch = tk.Button(self,text="Search", command = self.search_results)
+      self.btnSearch.pack()
 
-        self.btnSearch = tk.Button(self,text="Search", command = self.search_results)
-        self.btnSearch.pack()
+      self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
+      self.btnReturn.pack(side="bottom")
 
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.main_menu)
-        self.btnReturn.pack(side="bottom")
-
-
-        
- 
 #--------------------------------------------------------------------------------------
     def search_results(self):
 
-        search = self.enterSearch.get().lower()
+      search = self.enterSearch.get().lower()
 
-        for widget in self.winfo_children():
-            widget.destroy()
-        
-        self.text_area()
-        matches = load_matches()
-
-        found = False
+      for widget in self.winfo_children():
+          widget.destroy()
       
-        self.output_text.insert("end", "\nResults containing: " + search.upper() + "\n\n")
+      self.text_area()
+      matches = load_matches()
 
-        for match in matches:
-            if search in match.lower():
-                self.output_text.insert("end", display_match(match) + "\n")
-                found = True
+      found = False
+    
+      self.output_text.insert("end", "\nResults containing: " + search.upper() + "\n\n")
+
+      for match in matches:
+          if search in match.lower():
+              self.output_text.insert("end", display_match(match) + "\n")
+              found = True
 
 
-        if not found:
-            self.output_text.insert("end", "\n---- No matches found! ----")
+      if not found:
+          self.output_text.insert("end", "\n---- No matches found! ----")
 
-        self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.search_menu)
-        self.btnReturn.pack(side="bottom")
+      self.btnReturn = tk.Button(self, text="Return", fg="blue", command=self.search_menu)
+      self.btnReturn.pack(side="bottom")
 
 #--------------------------------------------------------------------------------------
 
