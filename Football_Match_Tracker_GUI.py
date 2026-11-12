@@ -1,6 +1,5 @@
 import tkinter as tk
 from matchLib import *
-from datetime import datetime
 
 #--------------------------------------------------------------------------------------
 
