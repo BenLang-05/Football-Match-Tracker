@@ -155,13 +155,38 @@ class Application(tk.Frame):
         date = self.enterDate.get()
         homeT = self.enterHomeT.get()
         awayT = self.enterAwayT.get()
-        homeS = int(self.enterHomeS.get())
-        awayS = int(self.enterAwayS.get())
+        homeS = self.enterHomeS.get()
+        awayS = self.enterAwayS.get()
         stadium = self.enterStad.get()
-        distance = float(self.enterDist.get())
+        distance = self.enterDist.get()
         result = self.enterResult.get().lower()
-        rating = float(self.enterRating.get())
-    
+        rating = self.enterRating.get()
+
+        if not validate_score(homeS):
+            self.lblError = tk.Label(self, text = "Home score must be a valid non-negative integer!", fg="red")
+            self.lblError.pack()
+            return
+
+        if not validate_score(awayS):
+            self.lblError = tk.Label(self, text = "Away score must be a valid non-negative integer!", fg="red")
+            self.lblError.pack()
+            return
+
+        if not validate_distance(distance):
+            self.lblError = tk.Label(self, text = "Distance must be a valid non-negative number!", fg="red")
+            self.lblError.pack()
+            return
+
+        if not validate_rating(rating):
+            self.lblError = tk.Label(self, text = "Rating must be between 1 and 10!", fg="red")
+            self.lblError.pack()
+            return
+
+        homeS = int(homeS)
+        awayS = int(awayS)
+        distance = float(distance)
+        rating = float(rating)
+      
         match = Match(date,homeT,awayT,homeS,awayS,stadium,distance,result,rating)
         
         with open("matches_Tracker.txt", "a") as f:
