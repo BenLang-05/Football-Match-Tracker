@@ -54,7 +54,7 @@ def validate_rating(rating):
 def validate_score(score):
     try:
         score = int(score)
-        if rating < 0:
+        if score < 0:
             return False
 
         return True
