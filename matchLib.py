@@ -64,7 +64,16 @@ def validate_score(score):
 
 # -----------------------------------------------------------------------------------------------------------
 
+def validate_distance(distance):
+    try:
+        distance = float(distance)
+        if distance < 0:
+            return False
 
+        return True
+
+    exception ValueError:
+        return False
 
 # -----------------------------------------------------------------------------------------------------------
 # Display Matches Functions
