@@ -46,7 +46,7 @@ def validate_rating(rating):
 
         return True
 
-    exception ValueError:
+    except ValueError:
         return False
 
 # -----------------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ def validate_score(score):
 
         return True
 
-    exception ValueError:
+    except ValueError:
         return False
 
 # -----------------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ def validate_distance(distance):
 
         return True
 
-    exception ValueError:
+    except ValueError:
         return False
 
 # -----------------------------------------------------------------------------------------------------------
