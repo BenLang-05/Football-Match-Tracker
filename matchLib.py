@@ -51,7 +51,16 @@ def validate_rating(rating):
 
 # -----------------------------------------------------------------------------------------------------------
 
+def validate_rating(score):
+    try:
+        score = int(score)
+        if rating < 0:
+            return False
 
+        return True
+
+    exception ValueError:
+        return False
 
 # -----------------------------------------------------------------------------------------------------------
 
