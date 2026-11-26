@@ -16,13 +16,33 @@ def add_match():
      date = input("Please enter the date in the form dd/mm/yyyy: ")
      homeT = input("Please enter the home team: ")
      awayT = input("Please enter the away team: ")
-     homeS = int(input("Please enter the home score: "))
-     awayS = int(input("Please enter the away score: "))
+     homeS = input("Please enter the home score: ")
+     awayS = input("Please enter the away score: ")
      stadium = input("Please enter the stadium visited: ")
-     distance = float(input("Please enter the distance travelled to the stadium in miles: "))
+     distance = input("Please enter the distance travelled to the stadium in miles: ")
      result = input("Did your team win, lose or draw: ").lower()
-     rating = float(input("please rate your team's performance from 1 to 10: "))
+     rating = input("please rate your team's performance from 1 to 10: ")
 
+     if not validate_score(homeS):
+          print("\n---- Home score must be a valid non-negative integer! ----\n")
+          return
+
+     if not validate_score(awayS):
+          print("\n---- Away score must be a valid non-negative integer! ----\n")
+          return
+
+     if not validate_distance(distance):
+          print("\n---- Distance must be a valid non-negative number! ----\n")
+          return
+
+     if not validate_rating(rating):
+          print("\n---- Rating must be between 1 and 10! ----\n")
+          return
+
+     homeS = int(homeS)
+     awayS = int(awayS)
+     distance = float(distance)
+     rating = float(rating)
 
      match = Match(date, homeT, awayT, homeS, awayS, stadium, distance, result, rating)
      with open("matches_Tracker.txt", "a") as f:
