@@ -32,7 +32,49 @@ def load_matches():
 def save_matches(matches):
     with open("matches_Tracker.txt", "w") as f:
         f.writelines(matches)
-        
+
+
+# -----------------------------------------------------------------------------------------------------------
+# Validate Functions
+# -----------------------------------------------------------------------------------------------------------
+
+def validate_rating(rating):
+    try:
+        rating = float(rating)
+        if rating < 1 or rating > 10:
+            return False
+
+        return True
+
+    except ValueError:
+        return False
+
+# -----------------------------------------------------------------------------------------------------------
+
+def validate_score(score):
+    try:
+        score = int(score)
+        if score < 0:
+            return False
+
+        return True
+
+    except ValueError:
+        return False
+
+# -----------------------------------------------------------------------------------------------------------
+
+def validate_distance(distance):
+    try:
+        distance = float(distance)
+        if distance < 0:
+            return False
+
+        return True
+
+    except ValueError:
+        return False
+
 # -----------------------------------------------------------------------------------------------------------
 # Display Matches Functions
 # -----------------------------------------------------------------------------------------------------------
