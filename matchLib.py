@@ -51,7 +51,7 @@ def validate_rating(rating):
 
 # -----------------------------------------------------------------------------------------------------------
 
-def validate_rating(score):
+def validate_score(score):
     try:
         score = int(score)
         if rating < 0:
